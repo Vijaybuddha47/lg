@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>new app</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/8.0.0-beta.3/hls.min.js"></script>
+	<style type="text/css">
+		body {
+			width: 100%;
+			height: 100%;
+			background-color: #202020;
+		}
+	</style>
+</head>
+
+<script src="webOSTVjs-1.2.4/webOSTV.js" charset="utf-8"></script>
+<script src="webOSTVjs-1.2.4/webOSTV-dev.js" charset="utf-8"></script>
+<script type="text/javascript">
+	//sample code for calling LS2 API
+	webOS.service.request("luna://com.palm.systemservice", {
+		method: "clock/getTime",
+		parameters: {},
+		onSuccess: function (args) {
+			console.log("UTC:", args.utc);
+		},
+		onFailure: function (args) {
+			console.log("Failed to getTime");
+		}
+	});
+</script>
+
+<body>
+	<video id="video"></video>
+	<script>
+		// if (Hls.isSupported()) {
+		//     var video = document.getElementById('video');
+		//     var hls = new Hls();
+		//     // bind them together
+		//     hls.attachMedia(video);
+		//     // MEDIA_ATTACHED event is fired by hls object once MediaSource is ready
+		//     hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+		//         console.log('video and hls.js are now bound together !');
+		//     });
+		// }
+		if (Hls.isSupported()) {
+			var video = document.getElementById('video');
+			var hls = new Hls();
+			hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+				console.log('video and hls.js are now bound together !');
+			});
+			hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+				console.log(
+					'manifest loaded, found ' + data.levels.length + ' quality level'
+				);
+			});
+			hls.loadSource('http://158.69.162.119:1935/live/telealbatv/playlist.m3u8');
+			// bind them together
+			hls.attachMedia(video);
+
+			video.play();
+		}
+	</script>
+</body>
+
+</html>

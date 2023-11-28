@@ -1,0 +1,18 @@
+{
+    "appDescription": "",
+    "icon": "images/icon_80x80.png",
+    "main": "splash.html",
+    "title": "CityNet",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0",
+    "splashBackground": "images/splash_screen.png",
+    "transparent":false,
+    "handlesRelaunch":false,
+    "bgColor": "#2a2821",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "images/largeIcon_130x130.png",
+    "iconColor": "#2a2821",
+    "id": "com.citynet.app",
+    "disableBackHistoryAPI":true
+}

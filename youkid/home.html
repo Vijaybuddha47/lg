@@ -1,0 +1,392 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=1920, user-scalable=no'>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <link rel="stylesheet" href="lib/player/mediaelementplayer.css">
+
+    <script type='text/javascript' src="lib/navigation/jquery.min.js"></script>
+    <script type='text/javascript' src='lib/marquee/jquery.marquee.min.js'></script>
+    <script type='text/javascript' src="lib/navigation/lodash.min.js"></script>
+    <script type='text/javascript' src="lib/navigation/spatial_navigation.js"></script>
+    <script type='text/javascript' src="lib/player/mediaelement-and-player.js"></script>
+
+    <script src="webOSTVjs-1.2.4/webOSTV.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div class="splash-screen">
+        <div class="loader" id="splash_loader">
+            <div class="circle_loader"></div>
+        </div>
+    </div>
+    <!-- Start of Background image -->
+    <div class="background_box">
+        <img src="images/bg.png" class="slider background_imgbox" id="background_slider" alt="Background image" />
+        <img src="images/fader_main.png" class="background_upimgbox" alt="Fader image" />
+    </div>
+    <!-- End of Background image -->
+
+    <!-- Start of upgrade screen -->
+    <div class="upgrade_container">
+        <div class="upgrade_content">
+            <div>
+                <img src="images/logo_onboarding.png" class="upgrade_logo_text" alt="Youkid" />
+            </div>
+            <div>
+                <img src="images/dino_2d.png" class="upgrade_logo_icon" alt="Youkid" />
+            </div>
+            <div class="upgrade_button_box">
+                <span class="upgrade_txt">יש לעדכן לגרסה חדשה יותר</span>
+                <span class="upgrade_txt">לעדכון, היכנסו לחנות האפליקציות וחפשו YOUKID</span>
+                <div id="upgrade_action">
+                    <button class="upgrade_button focusable" id="upgrade" tabindex="0" data-sn-up="null"
+                        data-sn-left="null" data-sn-right="null" data-sn-down="null">יציאה</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of upgrade screen -->
+
+    <div class="main_container">
+        <div class="header_container">
+            <!-- Start of header area -->
+            <!-- Start of header section -->
+            <div class="header">
+                <!-- start of Logo -->
+                <div class="logo">
+                    <img src="images/youkid_logo.png" alt="YouKidTV" />
+                </div>
+                <!-- End of Logo -->
+                <div class="homepage_header" id="homepage_header">
+                    <!-- Start of search btn -->
+                    <div class="search_btn">
+                        <div class="search" id="searchBox">
+                            <img class="search_icon_img" id="searchInputImage" src="images/search_icon.png"
+                                alt="Search glass" />
+                            <div class="search_bar focusable" id="searchInputText" tabindex="0" data-sn-up="null"
+                                data-sn-left="#talent_0" data-sn-right="#hamburger" data-sn-down="null">...לחפש
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of search btn -->
+                    <!-- start of User list -->
+                    <div class="talent_box talent_container" id="talentBox"></div>
+                    <!-- Start of hamburger section -->
+                    <div class="hamburger hamburger_menu" id="hamburgerMenu">
+                        <div class="hamburger_btn focusable" id="hamburger" tabindex="0" data-sn-up="null"
+                            data-sn-left="#searchInputText" data-sn-right="null" data-sn-down="null">
+                            <img class="menu_icon menu_button" id="menuImg" src="images/menu_focus.png" alt="Menu" />
+                        </div>
+                    </div>
+                    <!-- End of hamburger section -->
+                </div>
+                <div class="common_header" id="CancelButton">
+                    <div class="creator_profile_box">
+                        <div class="creator_box">
+                            <div class="creator_profile_img">
+                                <img class="profile_image" id="selected_talent_image" src="" alt="" />
+                            </div>
+                            <span class="creator_name" id="selected_talent_name"></span>
+                        </div>
+                    </div>
+                    <div class="creator_home_btn">
+                        <img class="home_top focusable" id="home_icon" tabindex="3" data-sn-up="null"
+                            data-sn-left="null" data-sn-right="#BackBtn" src="images/home_top.png" alt="Top Home" />
+                    </div>
+                    <div class="screen_name_box">
+                        <span class="screen_name" id="screen_name"></span>
+                    </div>
+                    <div class="back_to home">
+                        <img class="close_btn focusable" id="BackBtn" tabindex="3" data-sn-up="null"
+                            data-sn-left="#home_icon" data-sn-right="null" src="images/close_focus.png" alt="Close" />
+                    </div>
+                </div>
+            </div>
+            <!-- End of header section -->
+        </div>
+        <div class="home_container active">
+            <!-- End of header area -->
+            <!-- Start of heaer inner area  -->
+            <div class="menulist_container">
+                <div class="menu" id="menuList">
+                    <div class="menu_background">
+                        <img src="images/menu_fader.png" alt="Menu fader">
+                    </div>
+                    <div class="menu_tabs">
+                        <ul class="tab_list" id="home_tablist">
+                            <li class="focusable" tabindex="4" id="homePage" data-sn-up="#hamburger"
+                                data-sn-down="#favouritePage" data-sn-left="null" data-sn-right="null" data-type="HOME">
+                                <div class="menu_icons"><img src="images/home_icon.png" alt="Home" /></div>
+                                <span>מסך הבית</span>
+                            </li>
+                            <li class="focusable" tabindex="4" id="favouritePage" data-sn-up="#homePage"
+                                data-sn-down="#showPage" data-sn-left="null" data-sn-right="null" data-type="FAVORITE">
+                                <div class="menu_icons"><img src="images/heart_icon.png" alt="Favourite" /></div>
+                                <span>מועדפים</span>
+                            </li>
+                            <li class="focusable" tabindex="4" id="showPage" data-sn-up="#favouritePage"
+                                data-sn-down="#moviePage" data-sn-left="null" data-sn-right="null"
+                                data-type="cat_shows">
+                                <div class="menu_icons"><img src="images/show_icon.png" alt="Shows" /></div>
+                                <span>הצגות</span>
+                            </li>
+                            <li class="focusable" tabindex="4" id="moviePage" data-sn-up="#showPage"
+                                data-sn-down="#educationPage" data-sn-left="null" data-sn-right="null"
+                                data-type="cat_movies">
+                                <div class="menu_icons"><img src="images/movie_icon.png" alt="Movie" /></div>
+                                <span>סרטים</span>
+                            </li>
+                            <li class="focusable" tabindex="4" id="educationPage" data-sn-up="#moviePage"
+                                data-sn-down="#musicPage" data-sn-left="null" data-sn-right="null"
+                                data-type="cat_education">
+                                <div class="menu_icons"><img src="images/edu_icon.png" alt="Education" /></div>
+                                <span>ללמוד בכיף</span>
+                            </li>
+                            <li class="focusable" tabindex="4" id="musicPage" data-sn-up="#educationPage"
+                                data-sn-down="#logoutPage" data-sn-left="null" data-sn-right="null"
+                                data-type="cat_songs">
+                                <div class="menu_icons"><img src="images/music_icon.png" alt="Music" /></div>
+                                <span>שירים</span>
+                            </li>
+                            <li class="focusable" tabindex="4" id="logoutPage" data-sn-up="#musicPage"
+                                data-sn-down="#exitPage" data-sn-left="null" data-sn-right="null"
+                                data-type="cat_logout">
+                                <div class="menu_icons"><img src="images/logout_icon.png" alt="Music" /></div>
+                                <span>התנתק</span>
+                            </li>
+                            <li class="focusable" tabindex="4" id="exitPage" data-sn-up="#logoutPage"
+                                data-sn-down="null" data-sn-left="null" data-sn-right="null" data-type="cat_exit">
+                                <div class="menu_icons"><img src="images/exit_icon.png" alt="Music" /></div>
+                                <span>יציאה</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End of header inner area  -->
+            <div class="content_container">
+                <!-- Start of player btn box-->
+                <div class="player_btn_box homepage_button">
+                    <ul class="palyer_btn slider" id="homepageButton">
+                        <li class="play_btn focusable" tabindex="5" id="playBtn" data-sn-up="#hamburger"
+                            data-sn-left="#favBtn" data-sn-right="null" data-sn-down="null">
+                            <img src="images/play_button.png" alt="Play" />
+                        </li>
+                        <li class="fav_btn focusable" tabindex="5" id="favBtn" data-sn-up="#hamburger"
+                            data-sn-right="#playBtn" data-sn-left="#rightArrow" data-sn-down="null">
+                            <img class="fav_added" src="images/favorite_button.png" alt="Favorite" />
+                        </li>
+                        <li class="next_btn focusable" tabindex="5" id="rightArrow" data-sn-up="#hamburger"
+                            data-sn-left="#leftArrow" data-sn-right="#favBtn" data-sn-down="null">
+                            <img src="images/arrow_right.png" alt="Right arrow" />
+                        </li>
+                        <li class="prev_btn focusable" tabindex="5" id="leftArrow" data-sn-up="#hamburger"
+                            data-sn-left="null" data-sn-right="#rightArrow" data-sn-down="null">
+                            <img src="images/arrow_left.png" alt="Left arrow" />
+                        </li>
+                    </ul>
+                </div>
+                <!-- End of player btn box-->
+                <!-- Start of home page item list  -->
+                <div class="home_page_list_box">
+                    <ul class="home_page_inner_box" id="homePageItem">
+                    </ul>
+                </div>
+                <!-- End of home page item list -->
+                <!-- Start of shows list -->
+                <div class="home_page_menu_wise_list_box">
+                    <ul class="home_page_show_inner_box" id="homePageMenuWiseItem">
+                        <!--Here all home page content -->
+                    </ul>
+                </div>
+                <!-- End of shows list -->
+            </div>
+        </div>
+        <div class="talent_page_container">
+            <div class="creator_main_container">
+                <!-- Start of  content detail box-->
+                <div class="content_detail_box">
+                    <div class="content_time" id="focused_talent_video_time"></div>
+                    <div class="conten_heading" id="focused_talent_video_name">
+                    </div>
+                    <div class="about_content" id="focused_talent_video_desc">
+                    </div>
+                </div>
+                <!-- end of  content detail box-->
+                <!-- Start of video list  -->
+                <div class="creator_video_list_box" id="creatorVideosList">
+                    <ul class="creator_videos_box" id="creator_video_list"></ul>
+                </div>
+                <!-- End of video list  -->
+            </div>
+        </div>
+
+        <!-- Start of category page -->
+        <div class="category_container" id="category_container">
+            <div class="category_video_detail_box">
+                <div class="category_video_time" id="catVideoDuration"></div>
+                <div class="category_video_title" id="catVideoTitle"></div>
+                <div class="about_video" id="catVideoDesc"></div>
+            </div>
+            <div class="category_video_list_box">
+                <ul class="category_thumbnail_box" id="categoryitems">
+                </ul>
+            </div>
+        </div>
+        <!-- End of category page -->
+
+        <!-- Start of video detail page -->
+        <div class="detail_page_main_container">
+            <div class="detail_content_box">
+                <div class="content_time" id="category_page_duration"></div>
+                <div class="conten_heading" id="category_page_heading"></div>
+                <div class="about_content" id="category_page_desc"></div>
+            </div>
+            <div class="video_play">
+                <ul class="palyer_btn slider" id="DetailPageButton">
+                    <li class="play_btn detail_play_btn focusable" tabindex="9" id="detail_play_btn"
+                        data-sn-up="#BackBtn" data-sn-left="#detail_fav_btn" data-sn-right="null">
+                        <img class="play_show" src="images/play_button.png" alt="" />
+                        <img class="play_hide play_btn_focus" src="images/play_button_focus.png" alt="" />
+                    </li>
+                    <li class="fav_btn  detail_fav_btn focusable" tabindex="9" id="detail_fav_btn" data-sn-up="#BackBtn"
+                        data-sn-left="null" data-sn-right="#detail_play_btn">
+                        <img class="fav_show fav_removed" src="images/favorite_button.png" alt="" />
+                        <img class="fav_hide fav_btn_focus fav_added " src="images/favorite_button_focus.png" alt="" />
+                    </li>
+                </ul>
+            </div>
+            <div class="detail_video_list_box">
+                <span class="detail_list_heading" id="category_detail_heading"></span>
+                <div class="detail_videos_list">
+                    <ul class="detail_video_thumbnails" id="deatilPageVideoList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End of video detail page -->
+
+        <!-- Start of search container -->
+        <div class="search_container">
+            <div class="search_inside" id="searchPage">
+                <div class="search_title">
+                    <span>חיפוש</span>
+                </div>
+                <div class="search_input">
+                    <input class="search_box focusable" type="text" name="search" id="searchText" tabindex="15"
+                        data-sn-down="#searchEnter" data-sn-left="null" data-sn-right="null" data-sn-up="null">
+
+                </div>
+                <div class="keybord">
+                    <div class="submit_btn_box" id="searchBtn">
+                        <button class="submit_btn focusable" id="searchEnter" tabindex="15" data-sn-down="null"
+                            data-sn-left="null" data-sn-right="null" data-sn-up="#searchText">המשך</button>
+                    </div>
+                    <div class="search_message" id="searchMsg"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End of search container  -->
+        <!-- Start of search result container  -->
+        <div class="search_result_main_container">
+            <div class="search_result_page_desc">
+                <div class="detail_content_box">
+                    <div class="content_time" id="search_page_duration"></div>
+                    <div class="conten_heading" id="search_page_heading"></div>
+                    <div class="about_content" id="search_page_desc"></div>
+                </div>
+            </div>
+            <div class="search_video_list_box">
+                <ul class="searched_video_thumbnil_box" id="searchResultList">
+                </ul>
+            </div>
+        </div>
+        <!-- End of search result container -->
+        <!-- Start of search result container  -->
+        <div class="favorite_page_container">
+            <div class="no_favorite_msg"></div>
+            <div class="favorite_video_list_box">
+                <ul class="favorite_video_thumbnil_box" id="favoriteList">
+                </ul>
+            </div>
+        </div>
+        <!-- End of search result container -->
+
+        <!-- Start of search result container  -->
+        <div class="instruction_main_container">
+            <div class="instructions_img_box">
+                <img src="images/instructions.png" alt="Instructions">
+                <div class="otp_box">
+                    <span id="auth_code">567864</span>
+                </div>
+                <div class="auth_timer counter">
+                    <span>זמן</span>
+                </div>
+                <div class="auth_timer"><span id="count_down">09:58</span></div>
+            </div>
+        </div>
+        <!-- End of search result container  -->
+
+
+
+    </div>
+    <!-- End of main inner area  -->
+
+    <!-- Start of video container -->
+    <div class="video-player-container">
+        <div id="videoSection" class="player_icon_box">
+            <div tabindex='9' class="video-container video_container focusable" id="video_container"
+                data-sn-right="null" data-sn-left="null" data-sn-up="null" data-sn-down="null">
+                <!-- default video player -->
+            </div>
+            <!-- Start Previous / Next Video -->
+            <div class="video_next_previous_container" tabindex="7" id="videoNextPrevious">
+                <ul class="video_next_previous_icon_list">
+                    <li class="next_prev_video focusable" id="playPreviousVideo" data-sn-right="#playPauseVideo"
+                        data-sn-left="null" data-sn-down="null"><img src="images/previous_video.png"
+                            id="playPausePreviousIcon"></li>
+                    <li class="video_next_previous_play_pause_center focusable" id="playPauseVideo"
+                        data-sn-right="#playNextVideo" data-sn-left="#playPreviousVideo" data-sn-down="null"><img
+                            src="images/pause.png" id="playPauseIcon"></li>
+                    <li class="next_prev_video focusable" id="playNextVideo" data-sn-right="null"
+                        data-sn-left="#playPauseVideo" data-sn-down="null"><img src="images/next_video.png"
+                            id="playPauseNextIcon"></li>
+                </ul>
+            </div>
+            <!-- End Previous / Next Video -->
+        </div>
+    </div>
+    <!-- End of video container -->
+
+    <div class="loader" id="loader">
+        <div class="circle_loader"></div>
+    </div>
+    <!-- Start of popup screen -->
+    <span id="modal_container" class="modal_container">
+        <!-- Html file will come here -->
+    </span>
+    <!-- End popup screen -->
+
+    <!-- Start of javascript -->
+    <script type='text/javascript' src="js/config.js"></script>
+    <script type='text/javascript' src="js/main.js"></script>
+    <script type='text/javascript' src="js/utility.js"></script>
+    <script type='text/javascript' src="js/home.js"></script>
+    <script type='text/javascript' src="js/navigation.js"></script>
+    <script type='text/javascript' src="js/common-navigation-function.js"></script>
+    <script type='text/javascript' src="js/modal.js"></script>
+    <script type='text/javascript' src="js/magicRemoteEventListeners.js"></script>
+    <script type='text/javascript' src="js/video-player.js"></script>
+    <!-- Endtype='text/javascript'  of javascript -->
+</body>
+
+</html>

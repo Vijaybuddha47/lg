@@ -1,0 +1,11 @@
+{
+    "vendor": "UltraFixDev",
+    "largeIcon": "largeIcon.png",
+    "icon": "icon.png",
+    "main": "index.html",
+    "id": "com.ultraflixdev.app",
+    "title": "UltraFixDev",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0"
+}

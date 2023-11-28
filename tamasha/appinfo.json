@@ -1,0 +1,11 @@
+{
+    "vendor": "TamashaTV",
+    "largeIcon": "largeIcon.png",
+    "icon": "icon.png",
+    "main": "index.html",
+    "id": "com.tamasha-tv",
+    "title": "TamashaTV",
+    "type": "web",
+    "version": "1.0.0",
+    "disableBackHistoryAPI": true
+}

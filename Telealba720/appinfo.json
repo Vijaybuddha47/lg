@@ -1,0 +1,17 @@
+{
+    "id": "com.telealba1.app",
+    "title": "TeleALBA",
+    "main": "splash.html",
+    "icon": "app_logo.png",
+    "largeIcon": "images/app_logo.png",
+    "type": "web",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "version": "1.0.0",
+    "appDescription": "",
+    "resolution": "1280x720",
+    "bgColor": "#000000",
+    "iconColor": "#000000",
+    "transparent": false,
+    "handlesRelaunch": false,
+    "disableBackHistoryAPI": true
+}

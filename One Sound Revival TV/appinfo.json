@@ -1,0 +1,18 @@
+{
+    "appDescription": "",
+    "icon": "images/icon_80x80.png",
+    "main": "index.html",
+    "title": "One Sound Revival TV",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0",
+    "splashBackground": "images/splash_screen.png",
+    "transparent":false,
+    "handlesRelaunch":false,
+    "bgColor": "#ffeacd",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "images/icon.png",
+    "iconColor": "#ffeacd",
+    "id": "com.onesoundrevivaltv.app",
+    "disableBackHistoryAPI":true
+}

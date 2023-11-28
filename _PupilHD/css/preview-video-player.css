@@ -1,0 +1,125 @@
+/* Start Video container */
+.preview-video-container {
+    overflow: hidden;
+    /* position: relative; */
+    width: 940px;
+    height: 520px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background: #000;
+    z-index: 999999;
+}
+
+/* Start of video buffer loader */
+.preview-video-buffered {
+    position: absolute;
+    top: 0;
+    z-index: 999999;
+}
+
+.live-preview-player-loader {
+    left: 27%;
+    bottom: 65%;
+    width: 100%;
+    height: 100%;
+}
+
+.live-main-player-loader {
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+}
+
+.circle-loader {
+    width: 60px;
+    height: 60px;
+    background: url("../images/preview-loader.png") no-repeat;
+    background-size: cover;
+    -moz-animation: spin 5s infinite linear;
+    -webkit-animation: spin 5s infinite linear;
+}
+
+.buffered_dimension {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    -webkit-transform: translate(-46.2%, -43.3%);
+    -moz-transform: translate(-46.2%, -43.3%);
+    -ms-transform: translate(-46.2%, -43.3%);
+    -o-transform: translate(-46.2%, -43.3%);
+    transform: translate(-46.2%, -43.3%);
+    z-index: 9999999999999 !important;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.video_player_error_message {
+    display: none;
+    font-size: 26px;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    color: red;
+    font-family: 'tahoma-regular';
+    position: absolute;
+    top: 46%;
+    left: 40%;
+}
+
+.video_resize {
+    width: 1920px !important;
+    height: 1080px !important;
+}
+
+/* End of video buffer loader */
+
+.preview-loader {
+    position: absolute;
+    top: 40%;
+    left: 75%;
+    width: 60px;
+    height: 60px;
+    z-index: 9999999;
+    display: none;
+    background: url("../images/preview-loader.png") no-repeat;
+    background-size: cover;
+    -moz-animation: spin 5s infinite linear;
+    -webkit-animation: spin 5s infinite linear;
+}
+
+.preview_video_box {
+    width: 1920px;
+    height: 1080px;
+}
+
+.expand_preview_error_msg {
+    position: absolute !important;
+    top: 100% !important;
+    transform: translate(-50%) !important;
+    left: 50% !important;
+    z-index: 99999999999 !important;
+}
+
+.mejs__overlay-button {
+    display: none !important;
+}
+
+/* #preview-av-player,
+#preview_video_container {
+    display: none;
+} */
+
+/** Start of progress bar **/

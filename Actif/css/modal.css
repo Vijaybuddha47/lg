@@ -1,0 +1,232 @@
+.modal_container.active {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99999;
+    text-align: center;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    background-color: #00000054;
+}
+
+/** Start of exit popup **/
+.popup_container {
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background: #f7f7f7;
+    z-index: 1000;
+}
+
+.exit_modal {
+    background: #f7f7f7;
+    width: 700px;
+    height: 400px;
+    top: 0px;
+    left: 50%;
+    position: absolute;
+    z-index: 1050;
+    margin: 0px auto;
+    visibility: hidden;
+    display: none;
+    border: 4px solid #fff;
+    border-radius: 10px 10px;
+}
+
+.exit_modal_show {
+    top: 21.5%;
+    visibility: visible;
+    display: block;
+    transform: translate(-50%, 28.5%);
+    transition: ease-out;
+}
+
+.popup_btn {
+    text-align: center;
+}
+
+.popup_headline {
+    font-size: 40px;
+    padding-top: 128px;
+    padding-bottom: 85px;
+    text-align: center;
+    font-weight: normal;
+    color: #000000;
+}
+
+.no_button {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    margin-right: 42px;
+    border: none;
+    padding: 4px 4px;
+    /* background-color: #6F359E; */
+    color: #000000;
+    border-radius: 5px;
+}
+
+.yes_button {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    border: none;
+    padding: 4px 4px;
+    /* background-color: #6F359E; */
+    color: #000000;
+    border-radius: 5px;
+}
+
+.popup_img {
+    width: 900px;
+    height: 460px;
+    position: absolute;
+    z-index: -1;
+}
+
+.popup_btn button:focus {
+    box-shadow: none !important;
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #E90606, #FB8500, #9D4EDD, #35BCC7) border-box;
+    border-radius: 12px;
+    border: 4px solid transparent;
+    color: #000000;
+}
+
+/** End of exit popup **/
+
+/** Css for connection error popup **/
+.retry_modal {
+    background-color: #f7f7f7;
+}
+
+.dialog_img {
+    background-color: #f7f7f7;
+    width: 66px;
+    height: 66px;
+    display: table-cell;
+    vertical-align: middle;
+    background-size: contain;
+    float: left;
+}
+
+.popup_header {
+    font-size: 46px;
+    margin-top: 30px;
+    clear: both;
+    display: block;
+    float: left;
+    width: 100%;
+    line-height: 44px;
+}
+
+.dialog_txt {
+    width: 100%;
+    color: #000000;
+    display: block;
+    font-size: 36px;
+    width: 85%;
+    margin-top: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+    text-align: center;
+}
+
+.popup_description {
+    color: #000000;
+    font-size: 32px;
+    margin-bottom: 30px;
+    line-height: 47px;
+    padding-left: 71px;
+    padding-right: 34px;
+    height: 120px;
+    display: table-cell;
+    vertical-align: top;
+    padding-top: 36px;
+}
+
+.connection_btn {
+    font-size: 25px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    margin-top: 18px;
+    /* background-color: #6F359E; */
+    color: #000000;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.connection_retry_btn {
+    font-size: 25px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    margin-top: 18px;
+    /* background-color: #6F359E; */
+    color: #FFFFFF;
+    border-radius: 0px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.popup_connection {
+    width: 700px;
+    height: 400px;
+    top: 0px;
+    left: 50%;
+    position: absolute;
+    z-index: 999999;
+    margin: 0px auto;
+    visibility: hidden;
+    display: none;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+    background-color: #f7f7f7;
+}
+
+.mod_bg_color {
+    box-shadow: none !important;
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #E90606, #FB8500, #9D4EDD, #35BCC7) border-box;
+    border-radius: 12px;
+    border: 4px solid transparent;
+    color: #000000;
+}
+
+.popup_new_box {
+    top: 50%;
+    visibility: visible;
+    display: block;
+    transition: ease-in;
+}
+
+.zoom-in {
+    transform: scale(.95);
+}
+
+.language-change-message span {
+    font-size: 1.8rem;
+    font-weight: 400;
+    font-family: 'Montserrat-Regular';
+}
+
+.language-change-message span.change-lang-instruction {
+    font-size: 1.4rem !important;
+}
+
+.language_modal button {
+    color: #000000 !important;
+}
+
+/** End css for connection error popup **/

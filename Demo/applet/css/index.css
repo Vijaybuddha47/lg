@@ -1,0 +1,240 @@
+body {
+    text-align: center;
+    font-family: 'Assistant', sans-serif;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=), none;
+    user-select: none;
+}
+
+#log-container {
+    z-index: 20;
+    cursor: pointer;
+    margin: auto;
+    color: #c0c0c7;
+}
+
+#log-container > * {
+    border-radius: 4px;
+}
+
+#showThisWindow {
+    background-color: rgba(0, 0, 30, 0.5);
+    position: fixed;
+    text-align: center;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    z-index: 10;
+    padding: 1px 10px;
+    font-size: 1.5rem;
+}
+#alertNoConnection {
+    background-color: red;
+    bottom: 0%;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    margin: auto;
+    max-height: 5%;
+}
+
+#nowPlaying {
+    background-color: rgba(0, 0, 30, 0.5);
+    position: fixed;
+    text-align: center;
+    top: 5%;
+    width: 90%;
+    z-index: 10;
+    padding: 10px;
+}
+
+#nowPlaying h1 {
+    margin: 0;
+}
+
+#logger {
+    font-size: 1rem;
+    text-align: left;
+    overflow: auto;
+    position: fixed;
+    width: 90%;
+    height: 25%;
+    top: 60%;
+    left: 5%;
+    right: 5%;
+    bottom: 15%;
+    background-color: rgba(0, 0, 30, 0.5);
+    white-space: normal;
+    z-index: 10;
+    padding: 10px;
+}
+
+#header h1 {
+    margin-bottom: 0;
+}
+
+#header span {
+    font-size: 4rem;
+}
+
+#login {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: #00001e;
+}
+
+#loader {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+}
+
+#sidebar {
+    position: fixed;
+    left: 5%;
+    top: 2%;
+    color: #c0c0c7;
+}
+
+#inputEmail,
+#inputPassword,
+#playlistsList {
+    width: 300px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.7rem;
+    outline: 0;
+    padding: 10px;
+    background-color: #e8eeef;
+    color: #160f3e;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+}
+
+#formError {
+    margin: 5px auto;
+    background-color: crimson;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+}
+
+#goButton,
+#playButton,
+#button {
+    margin: 10px 0;
+    padding: 10px;
+    color: #160f3e;
+    background: #faff00;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.7rem;
+    text-align: center;
+    font-style: normal;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+}
+
+#playlistsContainer {
+    width: 100%;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    text-align: center;
+    position: fixed;
+    bottom: 10%;
+    right: 27%;
+}
+
+#qrHeader {
+    font-size: 4.8rem;
+    position: fixed;
+    left: 40%;
+    width: 50%;
+    top: 10%;
+}
+
+.fill {
+    object-fit: fill;
+}
+
+.contain {
+    object-fit: contain;
+}
+
+@media only screen and (max-height: 780px), (max-width: 520px) {
+    #header h1 {
+        font-size: 1rem;
+    }
+
+    #header span {
+        font-size: 2rem;
+    }
+
+    #login h1 {
+        font-size: 1rem;
+    }
+
+    #inputEmail,
+    #inputPassword,
+    #playlistsList {
+        font-size: 1.3rem;
+        padding: 8px;
+    }
+
+    #goButton,
+    #playButton,
+    #button {
+        margin-top: 5px;
+        padding: 8px;
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-height: 600px), (max-width: 350px) {
+    #header h1 {
+        font-size: 0.8rem;
+    }
+
+    #header span {
+        font-size: 1.5rem;
+    }
+
+    #login h1 {
+        font-size: 0.8rem;
+    }
+
+    #inputEmail,
+    #inputPassword,
+    #playlistsList {
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    #formError {
+        padding: 5px;
+    }
+
+    #goButton,
+    #playButton,
+    #button {
+        padding: 5px 10px;
+        font-size: 1rem;
+    }
+}

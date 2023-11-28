@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=1920, user-scalable=no'>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <link rel="stylesheet" href="css/preview-video-player.css">
+
+      <!-- All used js library -->
+      <script src="lib/navigation/jquery.min.js"></script>
+      <script src="lib/navigation/lodash.min.js"></script>
+      <script src="lib/navigation/spatial_navigation.js"></script>
+      <script src="lib/player/mediaelement-and-player.js"></script>
+  
+      <script src="webOSTVjs-1.2.4/webOSTV.js" charset="utf-8"></script>
+      <script src="webOSTVjs-1.2.4/webOSTV-dev.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <!--<div class="splash-screen"></div>-->
+    <div class="container_box main_container">
+        <!-- Start of left sidebar container -->
+        <div class="navbar_sidebar pushmenu-left menu_container toggle_menu active">
+            <div class="menu_logo">
+                <img src="images/app-logo.png" alt="PupilHD">
+            </div>
+            <div class="menu_tabs">
+                <ul class="tab_list" id="left_sidebar">
+                    <li class="tv-channel focusable selected_menu_text" id="tv_channel" tabindex="2" data-sn-up="null"
+                        data-sn-right="null" data-sn-left="null" data-sn-down="#video_library">
+                        <div class="menu_icons">
+                            <img src="images/tv-channel-hover.png" alt="Tv channel">
+                        </div>
+                        <span class="tab_heading">TV Channels</span>
+                    </li>
+                    <li class="video-library focusable" id="video_library" tabindex="2" data-sn-up="#tv_channel"
+                        data-sn-right="null" data-sn-left="null" data-sn-down="#search">
+                        <div class="menu_icons">
+                            <img src="images/video-library.png" alt="Video library">
+                        </div>
+                        <span class="tab_heading">Video Library</span>
+                    </li>
+                    <li class="search focusable" id="search" tabindex="2" data-sn-up="#video_library"
+                        data-sn-right="null" data-sn-left="null" data-sn-down="#account">
+                        <div class="menu_icons">
+                            <img src="images/search.png" alt="Search">
+                        </div>
+                        <span class="tab_heading">Search</span>
+                    </li>
+                    <li class="account focusable" id="account" tabindex="2" data-sn-up="#search" data-sn-right="null"
+                        data-sn-left="null" data-sn-down="#setting">
+                        <div class="menu_icons">
+                            <img src="images/account.png" alt="Account">
+                        </div>
+                        <span class="tab_heading">Account</span>
+                    </li>
+                    <li class="setting focusable" id="setting" tabindex="2" data-sn-up="#account" data-sn-right="null"
+                        data-sn-left="null" data-sn-down="#exit">
+                        <div class="menu_icons">
+                            <img src="images/setting.png" alt="Setting">
+                        </div>
+                        <span class="tab_heading">Settings</span>
+                    </li>
+                    <li class="exit focusable" id="exit" tabindex="2" data-sn-up="#setting" data-sn-right="null"
+                        data-sn-left="null" data-sn-down="null">
+                        <div class="menu_icons">
+                            <img src="images/exit.png" alt="Exit">
+                        </div>
+                        <span class="tab_heading">Exit PupilHD</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End of left sidebar container -->
+        <!-- Start of expend video player detail container -->
+        <div class="channel_tag channel_number_container" id="channel_input_box">
+            <input class="channel_namebox focusable" type="text" maxlength="4" minlength="1" id="channel_input"
+                tabindex="21" data-sn-right="null" data-sn-left="null" data-sn-down="null" data-sn-up="null" value="">
+        </div>
+        <div class="video_content_details" id="video_content_details" style="display:none;">
+            <div class="clock_time" id="clock_time"><span></span></div>
+            <div class="vertical_line"></div>
+            <div class="expend_video_detail_box">
+                <div class="expend_video_heading">
+                    <h1 id="player_channel_name"></h1>
+                </div>
+                <div class="expend_channel_scheduled" id="expend_channel_scheduled">
+                    <!-- <div class="channel_schedule"><span>06:30 pm</span> - <span>ABU AL BANAT</span></div>
+                    <div class="channel_schedule"><span>07:25 pm</span> - <span class="fade">ARAB IDOL</span></div> -->
+                </div>
+            </div>
+            <div class="favorite_hd" id="favorite_button">
+                <div class="hd_box" id="player_hd">HD</div>
+                <div class="Fav_box focusable" id="player_fav" tabindex="16" data-sn-up="#preview_video_container"
+                    data-sn-right="null" data-sn-left="null" data-sn-down="null"></div>
+            </div>
+            <div class="channel_logo_name">
+                <div class="channel_logo_expend" id="channel_logo_expend">
+                    <img src="./images/default.png" alt="">
+                    <span>PupilHD</span>
+                </div>
+            </div>
+        </div>
+        <!-- Start of expend video player detail container -->
+        <!-- Start of home container -->
+        <div class="home_container home_page_videobox" id="home_container">
+            <div class="top_slider">
+                <div class="banner_container">
+                    <div class="channal_detail_box">
+                        <div class="channal_data_container">
+                            <h1 class="channal_name" id="selected_channel_name"></h1>
+                            <div class="country_container">
+                                <span class="heading">Country:</span>
+                                <span class="detail" id="selected_channel_country"></span>
+                            </div>
+                            <div class="language_container">
+                                <span class="heading">Language:</span>
+                                <span class="name" id="selected_channel_language"></span>
+                            </div>
+                            <div class="quality_box">
+                                <img src="images/fav.png" alt="fav" id="selected_channel_fav" class="fav">
+                                <img src="images/hd.png" alt="hd" id="selected_channel_quality" class="hd">
+                            </div>
+                            <div class="tme_schedule" id="channel_epg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home_banner_image_box" id="preview-player">
+                        <div class="preview-loader"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="channel_list">
+                <div class="favorite_channel_box" id="favorite_list" style="display: none;">
+                </div>
+                <div class="channel_box" id="channel_list">
+                </div>
+            </div>
+        </div>
+        <!-- End of home container -->
+
+        <!-- Start of setting container -->
+        <div class="channel_setting_container setting_container" id="setting_container">
+            <h1 class="shorting_box_heading">TV Channels Sorting</h1>
+            <div class="channel_shorting_box" id="channel_sorting">
+                <div class="channel_type_row" id="alpha_numeric">
+                    <div class="channel_type focusable" id="alphabet" tabindex="4" data-sn-up="null"
+                        data-sn-right="#number" data-sn-left="#setting" data-sn-down="#genre">
+                        <div class="channel_type_image"> <img src="images/alphabetically.png" alt="Aphabetically"></div>
+                        <span class="channel_type_title">alphabetically</span>
+                        <span class="line"></span>
+                    </div>
+                    <div class="channel_type selected_sorting margin_right focusable" id="number" tabindex="4"
+                        data-sn-up="null" data-sn-right="null" data-sn-left="#alphabet" data-sn-down="#country">
+                        <div class="channel_type_image"> <img src="images/numerically-hover.png" alt="Numerically">
+                        </div>
+                        <span class="channel_type_title">numerically</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="channel_type_row" id="country_genre">
+                    <div class="channel_type focusable" id="genre" tabindex="17" data-sn-up="#alphabet"
+                        data-sn-right="#country" data-sn-left="#setting" data-sn-down="#first_country">
+                        <div class="channel_type_image"> <img src="images/genre.png" alt="Genres"></div>
+                        <span class="channel_type_title">genres</span>
+                        <span class="line"></span>
+                    </div>
+                    <div class="channel_type selected_type margin_right focusable" id="country" tabindex="4"
+                        data-sn-up="#number" data-sn-right="null" data-sn-left="#genre" data-sn-down="#first_country">
+                        <div class="channel_type_image"> <img src="images/countries-hover.png" alt="Countries"></div>
+                        <span class="channel_type_title">countries</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <h1 class="shorting_box_heading">TV Channels Countries Choice</h1>
+            <div class="select_country_box" id="country_choice">
+                <div class="channel_countries">
+                    <div class="channel_country_lable margin-top">1st</div>
+                    <div class="channel_country_title focusable" id="first_country" tabindex="5" data-sn-up="#genre"
+                        data-sn-right="null" data-sn-left="#setting" data-sn-down="#second_country"><span
+                            id="first_country_name">---</span>
+                        <ul class="country_sub_list" id="first_country_list">
+                        </ul>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="channel_countries">
+                    <div class="channel_country_lable">2nd</div>
+                    <div class="channel_country_title focusable" id="second_country" tabindex="5"
+                        data-sn-up="#first_country" data-sn-right="null" data-sn-left="#setting"
+                        data-sn-down="#third_country">
+                        <span id="second_country_name">---</span>
+                        <ul class="country_sub_list" id="second_country_list"></ul>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="channel_countries">
+                    <div class="channel_country_lable">3rd</div>
+                    <div class="channel_country_title focusable" id="third_country" tabindex="5"
+                        data-sn-up="#second_country" data-sn-right="null" data-sn-left="#setting" data-sn-down="null">
+                        <span id="third_country_name">---</span>
+                        <ul class="country_sub_list" id="third_country_list"></ul>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of setting container -->
+
+        <!-- Start of account container -->
+        <div class="account_container">
+            <div class="account_form">
+                <ul>
+                    <li class="account_detail_row">
+                        <span class="label">User Name:</span>
+                        <span class="detail" id="user_name"></span>
+                    </li>
+                    <li class="account_detail_row">
+                        <span class="label">Service Name:</span>
+                        <span class="detail" id="service_name"></span>
+                    </li>
+                    <li class="account_detail_row">
+                        <span class="label">Service Expiry:</span>
+                        <span class="detail" id="expiry_date"></span>
+                    </li>
+                    <li class="account_detail_row">
+                        <span class="label">MAC Address:</span>
+                        <span class="detail" id="mac_address"></span>
+                    </li>
+                    <li class="account_detail_row">
+                        <span class="label">IP Address:</span>
+                        <span class="detail" id="system_ip"></span>
+                    </li>
+                    <li class="account_detail_row">
+                        <span class="label">Version:</span>
+                        <span class="detail">1.0.3</span>
+                    </li>
+                    <li class="account_btns" id="account_btns">
+                        <span class="manage_btn focusable" id="manage" tabindex="3" data-sn-up="null"
+                            data-sn-right="null" data-sn-left="#account" data-sn-down="#sign_out">Manage</span>
+                        <span class="signout_btn focusable" id="sign_out" tabindex="3" data-sn-up="#manage"
+                            data-sn-right="null" data-sn-left="#account" data-sn-down="null">Sign Out</span>
+                    </li>
+                </ul>
+                <div class="logout_modal">
+                    <h2 class="logout_modal_heading" id="logout_modal_heading">Are you sure you want to signout
+                        ?</h2>
+                    <div class="modal_btn" id="logout_modal">
+                        <button class="modal_no_button focusable" id="no_logout" tabindex="9" data-sn-up="null"
+                            data-sn-right="#yes_logout" data-sn-left="null" data-sn-down="null">NO</button>
+                        <button class="modal_yes_buttonv focusable" id="yes_logout" tabindex="9" data-sn-up="null"
+                            data-sn-right="null" data-sn-left="#no_logout" data-sn-down="null">YES</button>
+                    </div>
+                </div>
+                <div class="pop-up-box" id="manage_modal">
+                    <div class="reset-heading">Visit our website</div>
+                    <span class="note">https://billing.pupilhd.com/portal/client/login/</span>
+                    <div class="popup-button focusable" id="manage_popup" tabindex='10' data-sn-up="null"
+                        data-sn-down="null" data-sn-left="null" data-sn-right="null">OK</div>
+                </div>
+            </div>
+        </div>
+        <!-- End of account container -->
+
+        <!-- Start of video library container -->
+        <div class="video_library_container" id="video_library_container">
+            <div class="video_library_slider">
+                <div class="video_library_banner">
+                    <div class="video_library_detail_box">
+                        <div class="video_library_data">
+                            <h1 class="video_name" id="video_name"></h1>
+                            <div class="video_content_meta" id="video_content_meta">
+                            </div>
+                            <div class="video_director">
+                                <span class="video_director_heading">Director:</span>
+                                <span class="director_name" id="director_name"></span>
+                            </div>
+                            <div class="video_casting_box">
+                                <span class="cast_heading">Actors:</span>
+                                <p class="cast_name" id="actors" dir="auto"></p>
+                            </div>
+                            <div class="about_video" id="video_desc" dir="auto">
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_banner_image_box" id="video-preview-player">
+                        <img src="" alt="Cover">
+                    </div>
+                </div>
+            </div>
+            <div class="video_list" id="video_list">
+                <div class="top_hidden_shadow_box"></div>
+            </div>
+            <div class="episode_container" id="episode_container">
+                <div class="loader" id="loader">
+                    <div class="episode_loader"></div>
+                </div>
+                <div class="episods_box">
+                    <h1 class="episode_heading">Episodes</h1>
+                    <div class="episode_category_box">
+                        <ul class="episode_thumbnail_box episode_list" id="episode_list">
+                            <!-- Append episode list here -->
+                        </ul>
+                    </div>
+                    <div class="episode_right_shadow_box"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End of video library container -->
+
+        <!-- Start of search container -->
+        <div class="search_result_box search_container">
+            <div class="searchbar_box" id="searchBox"><label>Search:</label> <input type="text" name="search"
+                    class="searching_box focusable" id="searchInputText" tabindex="8" data-sn-up="null"
+                    data-sn-down="null" data-sn-left="null" data-sn-right="null" value=""></div>
+            <div class="result_not_found">Sorry No Match Found</div>
+            <div class="loader" id="search_loader">
+                <div class="search_loader"></div>
+            </div>
+            <div class="search_result_container">
+                <div class="search_slider">
+                    <div class="search_banner">
+                        <div class="search_detail_box channel_search_details" id="channel_search_details">
+                            <div class="search_data">
+                                <div class="search_channel_content_meta">
+                                    <h1 class="channal_name" id="channel_result_name"></h1>
+                                    <div class="country_container">
+                                        <span class="heading">Country:</span>
+                                        <span class="detail" id="channel_result_country"></span>
+                                    </div>
+                                    <div class="language_container">
+                                        <span class="heading">Language:</span>
+                                        <span class="name" id="channel_result_lang"></span>
+                                    </div>
+                                    <div class="quality_box" id="channel_result_quality">
+                                        <img src="images/fav.png" alt="fav" id="channel_result_fav" class="fav">
+                                        <img src="images/hd.png" alt="hd" id="channel_result_hd" class="hd">
+                                        <img src="images/series.png" alt="series" id="video_searched_series"
+                                            class="series">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search_detail_box video_search_details" id="video_search_details">
+                            <div class="search_data">
+                                <h1 class="search_video_name" id="video_result_name"></h1>
+                                <div class="search_video_content_meta">
+                                    <span class="video_meta_data" id="video_result_year"></span>
+                                    <span class="video_meta_data" id="video_result_country"></span>
+                                    <span class="video_meta_data" id="video_result_genre"></span>
+                                    <span class="video_meta_data" id="video_result_time"></span>
+                                    <span class="video_meta_data" id="video_result_rating"></span>
+                                    <span class="video_meta_data quality_text" id="video_result_quality">HD</span>
+                                </div>
+                                <div class="search_video_director">
+                                    <span class="video_director_heading">Director :</span>
+                                    <span class="director_name" id="video_result_director"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search_banner_image_box" id="searchpage_player">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="search_result_list">
+                    <div class="result_list_box" id="search_tv_channels">
+                        <h1 class="search_result_heading" id="tv_channel_result_heading"></h1>
+                        <div class="search_category_left_shadow_box"></div>
+                        <div class="search_category_box">
+                            <ul class="search_thumbnail_box channel_result" id="channel_result"></ul>
+                        </div>
+                        <div class="search_category_right_shadow_box"></div>
+                    </div>
+                    <div class="result_list_box" id="search_videos">
+                        <h1 class="search_result_heading heading2" id="video_result_heading"></h1>
+                        <div class="result_list_left_shadow_box"></div>
+                        <div class="search_category_box">
+                            <ul class="search_thumbnail_box video_result" id="video_result"></ul>
+                        </div>
+                        <div class="result_list_right_shadow_box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of search container -->
+
+        <!-- Start of exit screen -->
+        <div class="exit_container" id="exit_container">
+            <div class="exit_box">
+                <div class="exit_inner_box">
+                    <div class="exit_text">Are you sure you want to exit?</div>
+                    <button class="exitButton focusable" tabindex="18" data-sn-down="null" data-sn-up="null"
+                        data-sn-right="null" data-sn-left="#exit" id="exitOk">Yes</button>
+                </div>
+            </div>
+        </div>
+        <!-- End of exit screen -->
+    </div>
+
+    <!-- Start of video container -->
+    <div class="video-player-container">
+        <div class="video_player_about_video" id="video_player_about_video">
+        </div>
+        <div id="videoPlayer">
+            <!-- <div class="video-container video_container focusable" id="video_container" tabindex='9'
+                data-sn-right="null" data-sn-left="null" data-sn-up="null" data-sn-down="#playPauseVideo"> -->
+                <div tabindex='9' class="video-container video_container video_box focusable" id="video_container"
+                    data-sn-right="null" data-sn-left="null" data-sn-up="null" data-sn-down="#playPauseVideo">
+                    <!-- default video player -->
+                </div>
+                <!-- Start of video pause -->
+                <div class="pause-icon" style="display: none;">
+                    <img src="images/btn_play_off.png" alt="pause icon">
+                </div>
+                <!-- End of video pause -->
+                <!-- Start of video inner -->
+                <div class="video-inner" style="display: none;">
+                    <h4 class="video-title"></h4>
+                    <!-- Start of video loader -->
+                    <div class="video-buffered">
+                        <div class="circle_loader buffered_dimension"></div>
+                    </div>
+                    <!-- End of video loader -->
+                </div>
+                <!-- End of video inner -->
+                <!-- Start of progress bar -->
+                <div class="player_progress" id="player_progress">
+                    <div class="progress-container" style="display: none;">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                aria-valuemax="100" style="width:0%">
+                                <span class="sr-only"></span>
+                                <span class="timer_forwerd"></span>
+                            </div>
+                        </div>
+                        <div class="all_time">
+                            <span class="progress-time" id="currentTime"></span>
+                            <span class="progress-time" id="totalTime"></span>
+                        </div>
+                    </div>
+                    <!-- End progress bar -->
+                    <!-- Start Previous / Next Video -->
+                    <div class="video_next_previous_container" tabindex="10" id="videoNextPrevious">
+                        <ul class="video_next_previous_icon_list">
+                            <li class="next_prev_video focusable" id="playPreviousVideo" data-sn-right="#playPauseVideo"
+                                data-sn-left="null" data-sn-down="null" data-sn-up="#video_container"><img
+                                    src="images/previous_video.png"></li>
+                            <li class="video_next_previous_play_pause_center focusable" id="playPauseVideo"
+                                data-sn-right="#playNextVideo" data-sn-left="#playPreviousVideo" data-sn-down="null"
+                                data-sn-up="#video_container">
+                                <img src="images/play.png" id="videoNextPreviousPlayPauseIcon">
+                            </li>
+                            <li class="next_prev_video focusable" id="playNextVideo" data-sn-right="null"
+                                data-sn-left="#playPauseVideo" data-sn-down="null" data-sn-up="#video_container">
+                                <img src="images/next_video.png">
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Previous / Next Video -->
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <!-- End of video container -->
+
+    <!-- Start of popup screen -->
+    <span id="modal_container" class="modal_container">
+        <!-- Html file will come here -->
+    </span>
+    <!-- End popup screen -->
+    <div class="background_box" id="home_spinner" style="display: block;">
+        <img src="images/login-background.png" class="background_upimgbox" />
+        <div class="login_loader" id="spinner">
+            <div class="login_circle_loader"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js " type="text/javascript "></script>
+    <script src="js/api-v2.js" type="text/javascript"></script>
+    <script src="js/home.js" type="text/javascript "></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/navigation.js " type="text/javascript "></script>
+    <script src="js/modal.js " type="text/javascript "></script>
+    <script src="js/navigation-common-function.js " type="text/javascript "></script>
+    <script src="js/preview-video-player.js " type="text/javascript "></script>
+    <script src="js/video-player.js " type="text/javascript "></script>
+</body>
+
+</html>

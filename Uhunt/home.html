@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=1920, user-scalable=no'>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="lib/player/mediaelementplayer.css">
+
+    <script src="lib/navigation/jquery.min.js"></script>
+    <script src="lib/navigation/lodash.min.js"></script>
+    <script src="lib/navigation/spatial_navigation.js"></script>
+    <script src="lib/player/mediaelement-and-player.js"></script>
+</head>
+
+<body>
+    <!--<div class="splash-screen"></div>-->
+    <div class="container_box main-container">
+        <div class="navbar_sidebar pushmenu-push pushmenu-left menu_container">
+            <img src="images/logo.png" class="logo">
+            <img src="images/logo_in.png" class="logo_in">
+            <ul class="navbar_list" id="menuList">
+                <!-- Append Menu List here -->
+            </ul>
+        </div>
+        <div class="slider_panelbox activate" id="nav_list">
+            <div class="navbar_rightsidebox">
+                <!-- Start of channel video box -->
+                <div class="cat_container">
+                    <!--<div class="filter_box" id="allVideosFilterBox">-->
+                    <!-- Filter Videos options -->
+                    <!--</div>-->
+                    <div class="featured_header featuredRowHeading" id="featuredRowHeading"></div>
+                    <div class="channel_video_box featuredRowContainer">
+                        <ul class="featured_channel_list" id="featuredRow">
+                            <!-- Append Row Items here -->
+                        </ul>
+                    </div>
+                    <!-- End of channel video box -->
+
+                    <!-- Start of channel video  box -->
+                    <div class="channel_video_box allVideosGridContainer gridContainer">
+                        <h2 class="featured_header allVideoRowHeading" id="allVideoRowHeading"></h2>
+                        <div class="channel_small_fullbox">
+                            <ul class="browse_channel_grid" id="allVideosGrid">
+                                <!-- Append Grid Items here -->
+                            </ul>
+                        </div>
+                        <div class="loader" id="loader">
+                            <div class="circle_loader"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of channel video  box -->
+
+                <!-- Category List Page Screen -->
+                <div class="channel_video_categories_menu_second_page_container">
+                    <div class="channel_video_box gridContainer">
+                        <h2 class="featured_header search_result_txt" id="catName"></h2>
+                        <div class="channel_small_fullbox channel_small_full_height">
+                            <ul class="browse_channel_grid cat_list" id="catList"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Channel List Page Screen -->
+                <div class="channel_list_page"></div>
+
+                <!-- Start Search Screen -->
+                <div class="search_box search_container"></div>
+                <!-- End Search Screen -->
+
+                <!-- Start channel third page screen(video list) -->
+                <div class="channel_third_page_container">
+                    <div class="channel_details_container" id="channelDetails">
+                        <!-- Channel details  -->
+                    </div>
+                    <div class="channel_video_box gridContainer">
+                        <h2 class="featured_header" id="third_page_header" style="font-size: 52px"></h2>
+                        <div class="channel_small_fullbox channel_third_page_full_width">
+                            <ul class="browse_channel_grid subcat_list" id="subcatList">
+                                <!-- video grid  -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End channel third page screen(video list) -->
+
+                <!-- Video Details Screen -->
+                <div class="video_details_container" id="videoDetails"></div>
+            </div>
+        </div>
+        <!-- End of channel video  box -->
+    </div>
+
+    <!-- Start of Video container -->
+    <div id="videoSection">
+        <div tabindex='5' class="video-container video_container focusable" id="video_container">
+            <!-- default/Vimeo player -->
+        </div>
+    </div>
+    <!-- End of video container -->
+
+    <!-- Start of popup screen -->
+    <span id="modal_container" class="modal_container">
+			<!-- Html file will come here -->
+		</span>
+    <!-- End popup screen -->
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/magicRemoteEventListeners.js"></script>
+</body>
+
+</html>

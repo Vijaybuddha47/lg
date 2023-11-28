@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=1920, user-scalable=no'>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <link rel="stylesheet" href="lib/player/mediaelementplayer.css">
+
+    <script type="text/javascript" src="lib/navigation/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/navigation/lodash.min.js"></script>
+    <script type="text/javascript" src="lib/navigation/spatial_navigation.js"></script>
+    <script type="text/javascript" src="lib/player/mediaelement-and-player.js"></script>
+    <script type="text/javascript" src="webOSTVjs-1.2.4/webOSTV.js"></script>
+</head>
+
+<body>
+    <div class="main_container">
+        <!-- Start of home page -->
+        <div class="menu_container">
+            <img src="images/nav_logo.png" class="home_image">
+            <div class="menu_list_container">
+                <ul class="menu_list" id="menuList">
+                    <!-- Menu comes here -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="live_page_container">
+            <!-- Live list -->
+        </div>
+
+        <div class="movie_page_container">
+            <!-- Movies / Shows list -->
+        </div>
+
+        <div class="seasons_page_container">
+            <!-- Shows' season list -->
+        </div>
+
+        <div class="episode_page_container">
+            <!-- Shows' seasons' Episode list -->
+        </div>
+
+        <div class="video_details_page_container">
+            <!-- video details -->
+        </div>
+
+        <div class="logout_page_container">
+            <!-- Login details and logout button -->
+        </div>
+
+        <div class="loader" id="loader">
+            <div class="circle_loader"></div>
+        </div>
+    </div>
+
+    <!-- Start of video container -->
+    <div class="video-player-container">
+        <div id="videoSection">
+            <div tabindex='5' class="video-container video_container focusable" id="video_container"
+                data-sn-right="null" data-sn-left="null" data-sn-up="null">
+                <!-- default video player -->
+            </div>
+            <!-- Start Previous / Next Video -->
+            <div class="video_next_previous_container" tabindex="7" id="videoNextPrevious">
+                <ul class="video_next_previous_icon_list">
+                    <li class="next_prev_video focusable" id="playPreviousVideo" data-sn-right="#playPauseVideo"
+                        data-sn-left="null" data-sn-down="null"><img src="images/previous_video.png"
+                            id="playPausePreviousIcon"></li>
+                    <li class="video_next_previous_play_pause_center focusable" id="playPauseVideo"
+                        data-sn-right="#playNextVideo" data-sn-left="#playPreviousVideo" data-sn-down="null"><img
+                            src="images/pause.png" id="playPauseIcon"></li>
+                    <li class="next_prev_video focusable" id="playNextVideo" data-sn-right="null"
+                        data-sn-left="#playPauseVideo" data-sn-down="null"><img src="images/next_video.png"
+                            id="playPauseNextIcon"></li>
+                </ul>
+            </div>
+            <!-- End Previous / Next Video -->
+
+            <!-- Start live channel search  -->
+            <div class="video_slides channel_list_container" id="channel_list_container">
+                <div class="all_title">All Channels</div>
+                <ul class="video_slide_listbox live_channel_list_container" id="live_channel_list">
+                </ul>
+            </div>
+            <div class="video_no_list channel_number_container" tabindex="11" id="channel_number_container">
+                <input class="focusable" type="text" maxlength="3" minlength="1" id="search_channel_number" value=""
+                    data-sn-right="null" data-sn-left="null" data-sn-down="null" data-sn-up="null" readonly>
+            </div>
+            <div class="channel_number_error_mesg"><span class="channel_error_msg">Channel doesn’t exist.</span>
+            </div>
+            <!-- End live channel search  -->
+
+            <div class="programme_info custom_control_container">
+                <ul class="live_player_controls" id="customControls">
+                    <li class="custom-controls focusable" tabindex="14" id="customHome" data-sn-right="#customDVR"
+                        data-sn-left="null" data-sn-down="#customLeft" data-sn-up="#video_container">
+                        <img src="images/home_icon.png" alt="Home" />
+                        <p class="custom_control_text">Home</p>
+                    </li>
+                    <li class="custom-controls focusable" tabindex="14" id="customDVR" data-sn-right="#customPause"
+                        data-sn-left="#customHome" data-sn-down="#customLeft" data-sn-up="#video_container">
+                        <img src="images/dvr.png" alt="custom icon">
+                        <p class="custom_control_text">DVR</p>
+                    </li>
+                    <!-- <li class="custom-controls focusable" tabindex="14" id="customPrevious"
+                							data-sn-right="#customPause" data-sn-left="#customDVR" data-sn-down="#customLeft"
+                							data-sn-up="#video_container">
+                							<img src="images/play_previous.png" alt="custom icon">
+                							<p class="custom_control_text">Play Previous</p>
+                						</li> -->
+                    <li class="custom-controls focusable" tabindex="14" id="customPause" data-sn-right="#customAudio"
+                        data-sn-left="#customDVR" data-sn-down="#customDetail" data-sn-up="#video_container">
+                        <img src="images/pause_icon.png" alt="custom icon">
+                        <p class="custom_control_text">Pause TV</p>
+                    </li>
+                    <!-- <li class="custom-controls focusable" tabindex="14" id="customStartOver"
+                							data-sn-right="#customAudio" data-sn-left="#customPause" data-sn-down="#customRight"
+                							data-sn-up="#video_container">
+                							<img src="images/start_over_icon.png" alt="custom icon">
+                							<p class="custom_control_text">Start Over</p>
+                						</li> -->
+                    <li class="custom-controls focusable" tabindex="14" id="customAudio" data-sn-right="#customClose"
+                        data-sn-left="#customPause" data-sn-down="#customRight" data-sn-up="#video_container">
+                        <img src="images/audio_icon.png" alt="custom icon">
+                        <p class="custom_control_text">Audio</p>
+                        <ul class="language-option" id="language_option">
+                            <li class="focusable" tabindex="13" id="language_0" data-sn-right="null" data-sn-left="null"
+                                data-sn-down="null" data-sn-up="null" data-value="0">Null</li>
+                        </ul>
+                    </li>
+                    <li class="custom-controls focusable" tabindex="14" id="customClose" data-sn-right="null"
+                        data-sn-left="#customAudio" data-sn-down="#customRight" data-sn-up="#video_container">
+                        <img src="images/close_icon.png" alt="custom icon">
+                        <p class="custom_control_text">Close</p>
+                    </li>
+                    <!-- <div class="progress live-progress-bar">
+                							<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                								aria-valuemax="100" style="width: 0%;">
+                								<span class="sr-only"></span>
+                							</div>
+                						</div> -->
+                </ul>
+                <!-- Start programme title and description -->
+                <ul class="programme_details" id="programme_details">
+                    <li class="arrow-left arrows focusable" tabindex="15" id="customLeft" data-sn-right="#customDetail"
+                        data-sn-left="null" data-sn-down="null" data-sn-up="#customHome">
+                        <img src="images/custom-left_low.png">
+                    </li>
+                    <li class="programme-detail focusable" tabindex="15" id="customDetail" data-sn-right="#customRight"
+                        data-sn-left="#customLeft" data-sn-down="null" data-sn-up="#customPause">
+                        <div class="img-box">
+                            <img class="channel-img" src="" alt="Channel" />
+                        </div>
+                        <div class="title-disc-box">
+                            <p class="programme_title" id="programmeTitle"></p>
+                            <p class="programme_desc" id="programmeDesc"></p>
+                        </div>
+                    </li>
+                    <li class="arrow-right arrows focusable" tabindex="15" id="customRight" data-sn-right="null"
+                        data-sn-left="#customDetail" data-sn-down="null" data-sn-up="#customClose">
+                        <img src="images/custom-right_low.png">
+                    </li>
+                </ul>
+
+                <div class="customProgressBar">
+                    <div class="leftTime timess">
+                        <p>02:00</p>
+                    </div>
+                    <div class="progressBar">
+                        <div class="liner">
+                        </div>
+                    </div>
+                    <div class="rightTimes timess">
+                        <p>03:00</p>
+                    </div>
+                </div>
+                <!-- End programme title and description  -->
+            </div>
+
+            <!-- <div class="programme_info epg_icon_container"> -->
+            <!-- Start programme title and description -->
+            <!-- <div class="programme_details" id="programme_details">
+                    <p class="programme_title" id="programmeTitle"></p>
+                    <p class="programme_desc" id="programmeDesc"></p>
+                </div> -->
+            <!-- End programme title and description  -->
+
+            <!-- Start EPG Icon -->
+            <!-- <div class="epg-icons" id="epgIcons">
+                    <button class="focusable epg_button" id="dvr" tabindex="8" data-sn-right="null" data-sn-left="null"
+                        data-sn-down="null">DVR</button>
+                </div> -->
+            <!-- End EPG Icon -->
+            <!-- </div> -->
+        </div>
+        <!-- Start Channel DVR -->
+        <div class="channel_dvr_box">
+            <div id="epgListContainer"></div>
+            <div id="customTimeSlotContainer"></div>
+        </div>
+        <!-- End Channel DVR -->
+    </div>
+    <!-- End of video container -->
+
+    <!-- Start of popup screen -->
+    <span id="modal_container" class="modal_container">
+        <!-- Html file will come here -->
+    </span>
+    <!-- End popup screen -->
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/navigation-common-function.js"></script>
+    <script type="text/javascript" src="js/video-player.js"></script>
+    <script type="text/javascript" src="js/magicRemoteEventListeners.js"></script>
+    <!-- End of home page -->
+</body>
+
+</html>

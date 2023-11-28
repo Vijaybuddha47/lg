@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.webos.ide.launcher.ui.enyoLaunchConfigurationType">
+<stringAttribute key="Application" value="testApp"/>
+<stringAttribute key="DebugPackageType" value="non-minify"/>
+<booleanAttribute key="ServiceRequired" value="false"/>
+<stringAttribute key="Target" value="emulator"/>
+</launchConfiguration>

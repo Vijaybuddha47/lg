@@ -1,0 +1,15 @@
+{
+    "appDescription": "French Translated app description",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "../../largeIcon.png",
+    "icon": "../../icon.png",
+    "main": "splash.html",
+    "id": "com.actif.app",
+    "title": "French ActifTV",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0",
+    "handlesRelaunch": false,
+    "transparent": false,
+    "disableBackHistoryAPI": true
+}

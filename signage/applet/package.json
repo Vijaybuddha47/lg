@@ -1,0 +1,38 @@
+{
+    "name": "plaier",
+    "version": "8.0.14-beta",
+    "description": "Plaier.io digital signage player",
+    "private": "true",
+    "main": "./index.html",
+    "devDependencies": {
+        "electron": "^16.0.0",
+        "electron-builder": "^22.13.1"
+    },
+    "author": "plaier.io",
+    "license": "UNLICENSED",
+    "scripts": {
+        "dist": "electron-builder",
+        "test": "SET NODE_ENV=test& electron ."
+    },
+    "build": {
+        "win": {
+            "target": "nsis",
+            "icon": "build/icon.ico"
+        },
+        "linux": {
+            "target": "appimage",
+            "category": "Graphics"
+        },
+        "nsis": {
+            "deleteAppDataOnUninstall": true,
+            "runAfterFinish": true
+        }
+    },
+    "dependencies": {
+        "@signageos/front-applet": "4.12.0",
+        "@signageos/front-display": "9.8.2"
+    },
+    "sos": {
+        "appletUid": "c3a6569cf390d0722caf9a8b67f6a5bf5a4e1052a2385b6126"
+    }
+}

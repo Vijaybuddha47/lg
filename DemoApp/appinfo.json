@@ -1,0 +1,18 @@
+{
+    "appDescription": "",
+    "icon": "app_icon.png",
+    "main": "splash.html",
+    "title": "PupilHD",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0",
+    "splashBackground": "images/splash-screen.png",
+    "transparent":false,
+    "handlesRelaunch":false,
+    "bgColor": "#000000",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "app_icon.png",
+    "iconColor": "#000000",
+    "id": "com.pupilhd.lg",
+    "disableBackHistoryAPI":true
+}

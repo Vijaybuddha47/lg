@@ -1,0 +1,10 @@
+{
+    "vendor": "fusionitechnologies.com",
+    "largeIcon": "largeIcon.png",
+    "icon": "icon.png",
+    "main": "index.html",
+    "id": "com.domain.app",
+    "title": "LgPrototype",
+    "type": "web",
+    "version": "0.0.1"
+}

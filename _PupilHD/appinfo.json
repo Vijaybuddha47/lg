@@ -1,0 +1,17 @@
+{
+    "appDescription": "PupilHD offers the best-in-class Live TV with more than 800 of the best (Arabic, Turkish, Kurdish, Persian, Afghani) channels streamed live all over the world. Our Channel contains a variety of Genres such as (Religion Islamic, Religion Christian, children's Islamic, children's Christian, Movies Arabic, Movies English, Drama Arabic, Drama English, Sports, Science, Business, News) PupilHD is YOUR ULTIMATE IPTV VIEWING EXPERIENCE* The App requires a valid PupilHD Account, if you don't have one please visit:https: //www.pupilhd.com/smart",
+    "icon": "app_icon80x80.png",
+    "main": "splash.html",
+    "splashColor": "#000000",
+    "title": "PupilHD",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0",
+    "splashBackground": "images/splash-screen.png",
+    "bgColor": "#000000",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "app_icon130x130.png",
+    "iconColor": "#000000",
+    "id": "com.pupilhd.app",
+    "disableBackHistoryAPI": true
+}

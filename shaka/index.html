@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>new app</title>
+	<style type="text/css">
+		body {
+			width: 100%;
+			height: 100%;
+			background-color: #202020;
+		}
+
+		.main-container {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			display: table;
+		}
+
+		h1 {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			color: #FFFFFF;
+		}
+
+		.play-container {
+			position: fixed;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+			display: block;
+			left: 0;
+			top: 0;
+		}
+
+		.play-container div {
+			position: relative;
+			text-align: center;
+			font-size: 30px;
+			color: #fff;
+			width: 200px;
+			height: 40px;
+			padding: 6px;
+			top: 42%;
+			left: 42%;
+		}
+	</style>
+
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" href="css/Status.css" />
+	<link rel="stylesheet" href="css/Player.css" />
+	<link rel="stylesheet" href="css/SnackBar.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<!-- Shaka Player ui compiled library default CSS: -->
+	<script src="lib/shaka/shaka-player.compiled.js"></script>
+
+	<!-- Your application source: -->
+	<script type="text/javascript" src="lib/navigation/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/navigation/lodash.min.js"></script>
+	<script type="text/javascript" src="js/AppLog.js"></script>
+	<script type="text/javascript" src="js/ErrorCode.js"></script>
+	<script type="text/javascript" src="js/Toast.js"></script>
+	<script type="text/javascript" src="js/Status.js"></script>
+	<script type="text/javascript" src="js/Util.js"></script>
+	<script type="text/javascript" src="js/MediaData.js"></script>
+	<script type="text/javascript" src="js/MediaPlayer.js"></script>
+	<script type="text/javascript" src="js/MediaPlayerUI.js"></script>
+	<script type="text/javascript" src="lib/navigation/spatial_navigation.js"></script>
+	<script src="webOSTVjs-1.2.4/webOSTV.js" charset="utf-8"></script>
+	<script src="webOSTVjs-1.2.4/webOSTV-dev.js" charset="utf-8"></script>
+</head>
+
+<body>
+	<div class="main-container">
+		<div class="play-container" id="customPlay">
+			<div class="custom-play-btn focusable" tabindex="0" id="playBtn">Play</div>
+		</div>
+
+		<div class="player">
+			<div class="video_wrapper" id="video_wrapper">
+				<video id="video" autoplay controls></video>
+			</div>
+			<div class="playcontrols" id="playcontrols">
+				<img class="focusable ctrl imgStyle" tabindex="1" id="Rewind" src="icons/rewind.png" alt="rewind" />
+				<img class="focusable ctrl imgStyle" tabindex="1" id="Play" src="icons/play.png" alt="play" />
+				<img class="focusable ctrl imgStyle" tabindex="1" id="Pause" src="icons/pause.png" alt="pause" />
+				<img class="focusable ctrl imgStyle" tabindex="1" id="Stop" src="icons/stop.png" alt="stop" />
+				<img class="focusable ctrl imgStyle" tabindex="1" id="Forward" src="icons/forward.png" alt="forward" />
+				<img class="focusable ctrl imgStyle" tabindex="1" id="Fullscreen" src="icons/fullscreen.png"
+					alt="fullscreen" />
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

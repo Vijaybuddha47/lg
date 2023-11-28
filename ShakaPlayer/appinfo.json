@@ -1,0 +1,11 @@
+{
+    "id": "com.sample.shakaplayer",
+    "version": "1.0.0",
+    "vendor": "LG Developer",
+    "type": "web",
+    "main": "index.html",
+    "title": "Shaka Player",
+    "icon": "icon.png",
+    "disableBackHistoryAPI": true,
+    "uiRevision": 3
+}

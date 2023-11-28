@@ -1,0 +1,18 @@
+{
+    "appDescription": "",
+    "icon": "images/icon_80x80.png",
+    "main": "index.html",
+    "title": "LamiaFM",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.4",
+    "splashBackground": "images/splash_screen.png",
+    "transparent": false,
+    "handlesRelaunch": false,
+    "bgColor": "#ffeacd",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "images/largeIcon_130x130.png",
+    "iconColor": "#ffeacd",
+    "id": "com.lamiafm.app",
+    "disableBackHistoryAPI": true
+}

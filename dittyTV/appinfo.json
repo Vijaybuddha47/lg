@@ -1,0 +1,18 @@
+{
+    "appDescription": "DittyTV is a 24/7 television network that produces and broadcasts music-focused entertainment including music videos, music news, artist profiles, album reviews, tour and festival coverage, and much more. Just tune in and enjoy world-class, handcrafted music entertainment from your favorite artists and artists you will love to discover.",
+    "icon": "images/icon_80x80.png",
+    "main": "home.html",
+    "title": "DittyTV",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "2.0.2",
+    "splashBackground": "images/splash-screen.png",
+    "handlesRelaunch": false,
+    "transparent": false,
+    "bgColor": "#000000",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "iconColor": "#000000",
+    "largeIcon": "images/app_icon_400x400.png",
+    "id": "com.dittytv.app",
+    "disableBackHistoryAPI": true
+}

@@ -1,0 +1,10 @@
+{
+    "vendor": "My Company",
+    "largeIcon": "largeIcon.png",
+    "icon": "icon.png",
+    "main": "index.html",
+    "id": "com.player.app",
+    "title": "player",
+    "type": "web",
+    "version": "0.0.1"
+}

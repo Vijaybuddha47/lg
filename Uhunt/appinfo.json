@@ -1,0 +1,18 @@
+{
+    "id": "com.uhunt.app",
+    "title": "Uhunt - Hunting & Fishing",
+    "main": "home.html",
+    "icon": "images/icon_80x80.png",
+    "largeIcon": "images/largeIcon_130x130.png",
+    "type": "web",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "version": "1.0.2",
+    "appDescription": "",
+    "resolution": "1920x1080",
+    "bgColor": "#ff451e",
+    "iconColor": "#ff451e",
+    "splashBackground": "images/splash-screen.png",
+    "transparent": false,
+    "handlesRelaunch": false,
+    "disableBackHistoryAPI": true
+}

@@ -1,0 +1,15 @@
+js/electron/
+js/cordova/
+build/
+dist/
+.history/
+.idea
+.DS_Store
+.vscode/
+.git/
+node_modules/
+.prettierrc
+.gitignore
+main.js
+main-beta.js
+

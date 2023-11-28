@@ -1,0 +1,14 @@
+{
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "../../largeIcon.png",
+    "icon": "../../icon.png",
+    "main": "splash.html",
+    "id": "com.actif.app",
+    "title": "ActifTV",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0",
+    "handlesRelaunch": false,
+    "transparent": false,
+    "disableBackHistoryAPI": true
+}

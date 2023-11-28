@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=1920, user-scalable=no'>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <link rel="stylesheet" href="lib/player/mediaelementplayer.css">
+
+    <script type="text/javascript" src="lib/navigation/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/navigation/lodash.min.js"></script>
+    <script type="text/javascript" src="lib/globalize/date.js"></script>
+    <script type="text/javascript" src="lib/globalize/moment.js"></script>
+    <script type="text/javascript" src="lib/player/mediaelement-and-player.js"></script>
+    <script type="text/javascript" src="lib/player/mediaelement-and-player.min.js"></script>
+    <script type="text/javascript" src="webOSTVjs-1.2.4/webOSTV.js"></script>
+
+    <!-- Clapper video player CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"></script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="background_box">
+            <img src="images/login-background.png" class="background_imgbox" />
+        </div>
+        <!-- Start of header -->
+        <div class="header">
+            <div class="navigation_box">
+                <div class="home_logo_box"><img class="header_logo" src="images/app_logo.png" alt="logo"></div>
+                <ul class="navbar" id="menu_items">
+                    <li class="nav_box selected_menu focusable" id="menu_0" tabindex='1' data-sn-up="null"
+                        data-sn-right="#menu_1" data-sn-left="null" data-sn-down="null">
+                        <img src="images/watch_icon.png" alt="Watch"><span>Watch</span>
+                    </li>
+                    <li class="nav_box focusable" id="menu_1" tabindex='1' data-sn-up="null" data-sn-right="null"
+                        data-sn-left="#menu_0" data-sn-down="null">
+                        <img src="images/setting_icon.png" alt="Manage"><span>Manage</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End of header -->
+
+        <!-- Start of home page items -->
+        <div class="home_container active" style="display:none;">
+            <ul class="home_inner_box" id="homepage_items">
+                <li class="home_content_box guide focusable" id="live_guide" tabindex='2' data-sn-down="null"
+                    data-sn-right="#on_demand" data-sn-left="null">
+                    <div class="center_image_box">
+                        <img src="images/guide.png" alt="">
+                    </div>
+                    <div class="heading_text">Live Guide</div>
+                </li>
+                <li class="home_content_box focusable" id="on_demand" tabindex='2' data-sn-down="null"
+                    data-sn-right="null" data-sn-left="#live_guide">
+                    <div class="center_image_box">
+                        <img src="images/on_demand.png" alt="">
+                    </div>
+                    <div class="heading_text">On Demand</div>
+                </li>
+            </ul>
+        </div>
+        <!-- End of home page items -->
+
+        <!-- Start of  channel container page -->
+        <div class="live_channel_container" style="display:none">
+            <div class="inner_demand_box">
+                <div class="demand_heading">
+                    <h4>Channel List</h4>
+                </div>
+                <div class="main_channel_box">
+                    <ul class="channel_number_box" id="channel_number_box">
+                        <!-- append all on demand items -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End of channel container page -->
+
+        <!-- Start of liveGuide page -->
+        <div class="epg_container" style="display:none;">
+            <div class="epg_list_container">
+                <div class="epg_inner_container" id="epg_inner_container">
+                    <div class="programing_container">
+                        <div class="popup_overlay" id="parentalcontrol_popup">
+                            <div class="popup_model">
+                                <div class="model_content">
+                                    <div class="model_heading">Unlock Parental Control</div>
+                                    <input type="password" class="focusable" tabindex="16" data-sn-down="#unlock_cancel"
+                                        data-sn-up="null" data-sn-right="null" data-sn-left="null" id="unlock_password">
+                                    <div class="password_incorrect">
+                                        <span id="password_incorrect">Incorrect password. Please enter correct
+                                            password.</span>
+                                        <span id="password_empty">Please enter
+                                            password</span>
+                                    </div>
+                                    <div class="model_btns" id="unlock_buttons">
+                                        <button class="cancel focusable" tabindex="16" data-sn-down="null"
+                                            data-sn-up="#unlock_password" data-sn-right="#unlock_ok" data-sn-left="null"
+                                            id="unlock_cancel">Cancel</button>
+                                        <button class="ok focusable" tabindex="16" data-sn-down="null"
+                                            data-sn-up="#unlock_password" data-sn-right="null"
+                                            data-sn-left="#unlock_cancel" id="unlock_ok">Ok</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left_content_box">
+                            <div class="channel_slider">
+                                <ul id="channel_slider"></ul>
+                            </div>
+                        </div>
+                        <div class="right_content_box" id="liveGuide_items">
+                            <div class="overlay" id="programlist_overlay">
+                                <div class="program_loader"></div>
+                            </div>
+                            <div class="epg_top_container">
+                                <div class="top_sections">
+                                    <div class="inner-top">
+                                        <div class="center-section img-section">
+                                            <img src="http://tv.telealba.com:7780/xtv-ws-client/api/content/thumbnail/tv_channel/81"
+                                                id="channel_logo_img">
+                                            <p id="channel_title">Telealba</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top_sections">
+                                    <div class="inner-top">
+                                        <div class="center-section">
+                                            <p id="current_program">Program name</p>
+                                            <p id="current_program_time">Program time 9:00pm-11:00 pm</p>
+                                            <p id="programInfo"></p>
+                                            <p class="program_description" id="current_program_desc"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="epg_lower_container">
+                                <ul id="program_container"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of liveGuide page -->
+
+        <!-- Start of on demand page -->
+        <div class="on_demand_container" style="display:none">
+            <div class="inner_demand_box">
+                <div class="demand_heading">
+                    <h4>On Demand</h4>
+                </div>
+                <div class="main_demandBox">
+                    <ul class="sec1 flt_bx" id="ondemand_items">
+                        <!-- append all on demand items -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End of on demand page -->
+
+        <!-- Start of on demand page -->
+        <div class="sub_category_container" style="display:none">
+            <div class="inner_demand_box">
+                <div class="demand_heading">
+                    <h4 id="sub_category_heading"></h4>
+                </div>
+                <div class="main_demandBox">
+                    <ul class="sec1 flt_bx" id="sub_category_list">
+                        <!-- append all on demand items -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End of on demand page -->
+
+        <!-- Start of category video list page -->
+        <div class="video_list_container video_list_container" style="display:none;">
+            <div class="inner_videoDetail_box" id="inner_videoDetail_box">
+                <div class="search_input_container">
+                    <div class="search_bar_box" id="search_bar_box">
+                        <div class="search_selection focusable" data-sn-left="null" data-sn-up="null"
+                            data-sn-right="null" tabindex="15" id="searchBox">
+                            <span id="searchTextShow"></span>
+                            <span class="search_box_icon"><img src="images/search_icon.png"></span>
+                        </div>
+                    </div>
+                    <div class="search_bar" id="search_bar">
+                        <input type="text" class="form-control focusable" data-sn-left="null" data-sn-down="null"
+                            data-sn-up="#menu_0" data-sn-right="null" tabindex="14" id="searchInputText">
+                        <span class="search_icon"><img src="images/search_icon.png"></span>
+                        <div class="result_not_found">Sorry No Match Found</div>
+                    </div>
+                </div>
+                <div class="videoDetail_heading">
+                    <span id="category_detail"></span>
+                    <h4 id="category_heading"></h4>
+                </div>
+                <div class="video_list_container_box">
+                    <ul class="vid_box_content" id="video_list">
+                        <!-- append category video -->
+                    </ul>
+                </div>
+                <div class="description_container_box" id="videoDetail">
+                    <div class="discription_box">
+                        <div class="video_title">
+                            <p>lorem ipsum</p>
+                        </div>
+                        <div class="video_desc">
+                            <span class="video_duration">1h 4min</span><br>
+                            <span class="video_rating">NR</span><br>
+                            <span class="video_subs">Rent for:</span><br>
+                            <span class="video_free">Free for 2 days</span>
+                        </div>
+                        <div class="video_description">
+                            <p>lorem ipsum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Endof category video list page -->
+
+        <!-- Start of logout container -->
+        <div class="logout_container" id="logout_container" style="display:none;">
+            <div class="inner_logout_box" id="manage_btn">
+                <p>You are logged in as</p>
+                <h4 id="login_username"></h4>
+                <button class="logout_btn focusable" tabindex="12" data-sn-down="null" data-sn-up="#menu_1"
+                    data-sn-right="null" data-sn-left="null" id="logout_btn"><img
+                        src="images/logout.png">Logout</button>
+                <div class="support_container">
+                    <span>TeleALBA</span>
+                    <div class="contact_container">
+                        <span>Customer Support Contact:</span>
+                        <div>Contact Phone Number: +1 (215) 722-8353</div>
+                        <div>Toll Free (USA and Canada): 1 (866) 822 8353</div>
+                        <div>Website: www.telealba.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of logout container -->
+    </div>
+
+    <!-- Start of video container -->
+    <div class="video-player-container">
+        <div id="videoSection" class="player_icon_box">
+            <div tabindex='8' class="video-container video_container focusable" id="video_container"
+                data-sn-right="null" data-sn-left="null" data-sn-up="null" data-sn-down="null">
+                <!-- default video player -->
+            </div>
+            <!-- Start Previous / Next Video -->
+            <div class="video_next_previous_container" tabindex="9" id="videoNextPrevious" style="display: none;">
+                <ul class="video_next_previous_icon_list">
+                    <li class="next_prev_video focusable" id="playPreviousVideo" data-sn-right="#playPauseVideo"
+                        data-sn-left="null" data-sn-down="null"><img src="images/previous_video.png"></li>
+                    <li class="video_next_previous_play_pause_center focusable" id="playPauseVideo"
+                        data-sn-right="#playNextVideo" data-sn-left="#playPreviousVideo" data-sn-down="null">
+                        <img src="images/pause.png" id="videoNextPreviousPlayPauseIcon">
+                    </li>
+                    <li class="next_prev_video focusable" id="playNextVideo" data-sn-right="null"
+                        data-sn-left="#playPauseVideo" data-sn-down="null"><img src="images/next_video.png">
+                    </li>
+                </ul>
+            </div>
+            <!-- End Previous / Next Video -->
+        </div>
+    </div>
+    <!-- End of video container -->
+
+    <div class="loader" id="loader">
+        <div class="circle_loader"></div>
+    </div>
+
+    <!-- Start of popup screen -->
+    <span id="modal_container" class="modal_container">
+        <!-- Html file will come here -->
+    </span>
+    <!-- End popup screen -->
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/navigation-common-function.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/api-v1.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/video-player.js"></script>
+    <script type="text/javascript" src="lib/navigation/spatial_navigation.js"></script>
+    <script type="text/javascript" src="js/magicRemoteEventListeners.js"></script>
+</body>
+
+</html>

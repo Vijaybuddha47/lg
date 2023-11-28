@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=1920, user-scalable=no'>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <title>Actif</title>
+
+    <link rel="stylesheet" href="css/bootstrapBundle-5-2-2.css">
+    <link rel="stylesheet" href="lib/player/mediaelementplayer.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+
+    <script type="text/javascript" src="lib/navigation/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/navigation/lodash.min.js"></script>
+    <script type="text/javascript" src="lib/player/mediaelement-and-player.js"></script>
+    <script type="text/javascript" src="lib/player/mediaelement-and-player.min.js"></script>
+    <script type="text/javascript" src="webOSTVjs-1.2.4/webOSTV.js"></script>
+    <script type="text/javascript" src="lang/fr/fr.js"></script>
+    <script type="text/javascript" src="lang/en/en.js"></script>
+    <script type="text/javascript" src="lang/pt/pt.js"></script>
+    <script type="text/javascript">
+        console.log(localStorage);
+        var TXT = {};
+
+        if (localStorage.getItem("locale") == null) localStorage.setItem("locale", "pt-PT");
+        var locale = localStorage.getItem("locale").split('-')[0];
+
+        if (locale == 'pt') {
+            TXT = portuguese;
+            $("html").attr("lang", 'pt');
+        } else if (locale == 'fr') {
+            TXT = french;
+            $("html").attr("lang", 'fr');
+        } else if (locale == 'en') {
+            TXT = english;
+            $("html").attr("lang", 'en');
+        }
+
+        console.log(TXT);
+    </script>
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- sidebar section start -->
+        <section class="sidebar menu_container">
+            <div class="logo-box">
+                <img src="images/sidebar-logo.png">
+            </div>
+            <ul class="menu-list-container" id="menu_items">
+                <li class="menu focusable" tabindex="0" id="menu_0" data-sn-down="#menu_1" data-sn-up="null"
+                    data-sn-right="null" data-sn-left="null">
+                    <div class="menu-title-box">
+                        <img src="images/search.png">
+                        <p id="searchMenu"></p>
+                    </div>
+                </li>
+                <li class="menu focusable" tabindex="0" id="menu_1" data-sn-down="#menu_2" data-sn-up="#menu_0"
+                    data-sn-right="null" data-sn-left="null">
+                    <div class="menu-title-box">
+                        <img src="images/home.png">
+                        <p id="homeMenu"></p>
+                    </div>
+                </li>
+                <li class="menu focusable" tabindex="0" id="menu_2" data-sn-down="#menu_3" data-sn-up="#menu_1"
+                    data-sn-right="null" data-sn-left="null">
+                    <div class="menu-title-box">
+                        <img src="images/dashboard.png">
+                        <p id="dashboardMenu"></p>
+                    </div>
+                </li>
+                <li class="menu focusable" tabindex="0" id="menu_3" data-sn-down="#menu_4" data-sn-up="#menu_2"
+                    data-sn-right="null" data-sn-left="null">
+                    <div class="menu-title-box">
+                        <img src="images/settings.png">
+                        <p id="settingMenu"></p>
+                    </div>
+                </li>
+                <li class="menu focusable" tabindex="0" id="menu_4" data-sn-down="null" data-sn-up="#menu_3"
+                    data-sn-right="null" data-sn-left="null">
+                    <div class="menu-title-box">
+                        <img src="images/logout.png">
+                        <p id="logoutMenu"></p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- sidebar section end -->
+
+        <!-- search section start -->
+        <section class="main-section search_container" style="display:none;">
+            <div class="container-fluid">
+                <div class="row search-row">
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="input-container">
+                                <input type="text" class="input-text" id="searchInputText" placeholder="Type...">
+                            </div>
+                            <div class="keyboard-container">
+                                <div class="v-keyboard" id="keyboard">
+                                    <div class="v-keys-box">
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_q"><span>q</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_w">
+                                            <span>w</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_e">
+                                            <span>e</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_r">
+                                            <span>r</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_t">
+                                            <span>t</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_y">
+                                            <span>y</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_u">
+                                            <span>u</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_i">
+                                            <span>i</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_o">
+                                            <span>o</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_p"><span>p</span>
+                                        </div>
+                                        <div class="v-keys key-letters a-key-letters focusable" tabindex="1" id="key_a">
+                                            <span>a</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_s">
+                                            <span>s</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_d">
+                                            <span>d</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_f">
+                                            <span>f</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_g">
+                                            <span>g</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_h">
+                                            <span>h</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_j">
+                                            <span>j</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_k">
+                                            <span>k</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_l">
+                                            <span>l</span>
+                                        </div>
+                                        <div class="v-keys special-function focusable" tabindex="1"
+                                            data-sn-down="#key_num" data-sn-up="#key_a" id="key_caps">
+                                            <span><img class="keyboard-img" src="images/caps.png"></span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_z">
+                                            <span>z</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_x">
+                                            <span>x</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_c">
+                                            <span>c</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_v">
+                                            <span>v</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_b">
+                                            <span>b</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_n">
+                                            <span>n</span>
+                                        </div>
+                                        <div class="v-keys key-letters focusable" tabindex="1" id="key_m">
+                                            <span>m</span>
+                                        </div>
+                                        <div class="v-keys special-function focusable" tabindex="1"
+                                            data-sn-down="#key_enter" data-sn-up="#key_l" id="key_clear">
+                                            <span><img class="keyboard-img" src="images/clear.png"></span>
+                                        </div>
+                                        <div class="action-keys">
+                                            <div class="v-keys number-key-btn focusable" tabindex="1"
+                                                data-sn-right="#key_space" data-sn-down="#category_filter" id="key_num">
+                                                123</div>
+                                            <div class="v-keys space-btn focusable" tabindex="1" data-sn-left="#key_num"
+                                                data-sn-right="#key_enter" data-sn-down="#category_filter"
+                                                id="key_space">
+                                                Space
+                                            </div>
+                                            <div class="v-keys search-key-btn focusable" tabindex="1"
+                                                data-sn-left="#key_space" data-sn-up="#key_clear"
+                                                data-sn-down="#category_filter" id="key_enter">
+                                                <div><img class="keyboard-img" src="images/search_btn.png"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-container">
+                                <div class="filter-heading">
+                                    <h2 id="filterBytext">
+                                    </h2>
+                                </div>
+                                <ul class="filter-conatiner-list">
+                                    <li>
+                                        <div id="category_selection">
+                                            <div class="filter-cat-text focusable" tabindex="2" id="category_filter"
+                                                data-sn-down="#subcategory_filter" data-sn-up="#key_space">
+                                                <div class="filter-cat-box filter-options">
+                                                    <span class="main-filter-heading" id="filterByCategoryText"></span>
+                                                    <span class="right-arrow-box">
+                                                        <img src="images/right-arrow.png" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="filter-cat-options options-list category_filter_options">
+                                            <ul class="filter-options-list" id="category_options">
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="list-disabled">
+                                        <div id="subcategory_selection">
+                                            <div class="filter-cat-text  focusable" tabindex="3" id="subcategory_filter"
+                                                data-sn-down="#intensity_filter" data-sn-up="#category_filter">
+                                                <div class="filter-subcat-box filter-options">
+                                                    <span class="main-filter-heading"
+                                                        id="filterBySubcategoryText"></span>
+                                                    <span class="right-arrow-box enabled-right">
+                                                        <img src="images/right-arrow.png" />
+                                                    </span>
+                                                    <span class="right-arrow-box disabled-right">
+                                                        <img src="images/disabled-arrow.png" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="filter-subcat-options options-list subcategory_filter_options">
+                                            <ul class="filter-options-list" id="subcategory_options">
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div id="intensity_selection">
+                                            <div class="filter-cat-text  focusable" tabindex="4" id="intensity_filter"
+                                                data-sn-down="#duration_filter" data-sn-up="#subcategory_filter">
+                                                <div class="filter-intensity-box filter-options">
+                                                    <span class="main-filter-heading" id="filterByIntensityText"></span>
+                                                    <span class="right-arrow-box">
+                                                        <img src="images/right-arrow.png" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="filter-intensity-options options-list intensity_filter_options">
+                                            <ul class="filter-options-list" id="intensity_options">
+                                                <li class="filter-intensity-list focusable" tabindex="20"
+                                                    id="intensity_option_0" data-sn-up="null"
+                                                    data-sn-down="#intensity_option_2"
+                                                    data-sn-right="#intensity_option_1" data-sn-left="null"
+                                                    data-id="low">
+                                                    <div>
+                                                        <img src="images/filter-unchecked.png" />
+                                                        <span class="color-circle blue-color"></span>
+                                                        <h4 id="blueIntensityText">Blue Intensity</h4>
+                                                    </div>
+                                                </li>
+                                                <li class="filter-intensity-list focusable" tabindex="20"
+                                                    id="intensity_option_1" data-sn-up="null" data-sn-down="null"
+                                                    data-sn-right="#intensity_option_2"
+                                                    data-sn-left="#intensity_option_0" data-id="mid">
+                                                    <div>
+                                                        <img src="images/filter-unchecked.png" />
+                                                        <span class="color-circle purple-color"></span>
+                                                        <h4 id="purpleIntensityText">Purple Intensity</h4>
+                                                    </div>
+                                                </li>
+                                                <li class="filter-intensity-list focusable" tabindex="20"
+                                                    id="intensity_option_2" data-sn-up="#intensity_option_0"
+                                                    data-sn-down="null" data-sn-right="null"
+                                                    data-sn-left="#intensity_option_1" data-id="high">
+                                                    <div>
+                                                        <img src="images/filter-unchecked.png" />
+                                                        <span class="color-circle orange-color"></span>
+                                                        <h4 id="orangeIntensityText">Orange Intensity</h4>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div id="duration_selection">
+                                            <div class="filter-cat-text  focusable" tabindex="5" id="duration_filter"
+                                                data-sn-down="#apply" data-sn-up="#intensity_filter">
+                                                <div class="filter-duration-box filter-options">
+                                                    <span class="main-filter-heading" id="filterByDurationText"></span>
+                                                    <span class="right-arrow-box">
+                                                        <img src="images/right-arrow.png">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="filter-duration-box options-list duration_filter_options">
+                                            <ul class="filter-options-list" id="duration_options">
+                                                <li class="filter-duration-list focusable" tabindex="21"
+                                                    id="duration_option_0" data-sn-up="null"
+                                                    data-sn-down="#duration_option_0" data-sn-right="#duration_option_1"
+                                                    data-sn-left="null" data-id="%3C15min">
+                                                    <div>
+                                                        <img src="images/filter-unchecked.png">
+                                                        <h4 id="15Minutes">&lt; 15 minutes </h4>
+                                                    </div>
+                                                </li>
+                                                <li class="filter-duration-list focusable" tabindex="21"
+                                                    id="duration_option_1" data-sn-up="null" data-sn-down="null"
+                                                    data-sn-right="#duration_option_2" data-sn-left="#duration_option_0"
+                                                    data-id="%3C15-30min">
+                                                    <div>
+                                                        <img src="images/filter-unchecked.png">
+                                                        <h4 id="15To30Minutes">15-30 minutes </h4>
+                                                    </div>
+                                                </li>
+                                                <li class="filter-duration-list focusable" tabindex="21"
+                                                    id="duration_option_2" data-sn-up="#duration_option_0"
+                                                    data-sn-down="null" data-sn-right="null"
+                                                    data-sn-left="#duration_option_1" data-id="%3C30min">
+                                                    <div>
+                                                        <img src="images/filter-unchecked.png" />
+                                                        <h4 id="moreThan30Minutes">&gt; 30 minutes </h4>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="filter-buttons" id="filter_keys">
+                                    <div class="apply-btn search-action-btn focusable" tabindex="6" id="apply"
+                                        data-sn-down="null" data-sn-up="#duration_filter" data-sn-left="#clear">
+                                        <h3 id="applyFilterText"></h3>
+                                    </div>
+                                    <div class="clear-btn search-action-btn  focusable" tabindex="6" id="clear"
+                                        data-sn-down="null" data-sn-up="#duration_filter" data-sn-right="#apply">
+                                        <h3 id="clearFilterText"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="search-recommend-container"> -->
+                    <div class="col-md-7 search_result_container">
+                        <div class="search-result-heading">Results(63)</div>
+                        <div class="col search_list" id="search_list">
+                            <ul class="search_result" id="search_result">
+                                <li>
+                                    <div class="search_item">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="search_item">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge badge2">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="search_item">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge badge3">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="search_item">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge badge2">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="search_item">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge badge3">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="search_item">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </section>
+        <!-- search section end -->
+
+        <!-- Start of home page items -->
+        <div class="home_container active" style="display:none;">
+            <section class="main-section home-section">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-div">
+                                <!-- category section start -->
+                                <div class="category-section">
+                                    <div class="row" id="category_list">
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>YOGA</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>TAI-CHI</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>FITNESS</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>MEDITATION</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>DANCE</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>DUAL TASK</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>COGNITIVE</h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="inner-category">
+                                                <h4>CULTURE</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- category section end -->
+
+                                <!-- home item section start -->
+                                <div class="thumbnail-section">
+                                    <div class="row home_items" id="home_items">
+                                        <div class="col-md-4">
+                                            <div class="inner-thumbnail">
+                                                <img src="images/thumb-img.png">
+                                                <div class="inner-thumbnail-details">
+                                                    <h6>Video’s title</h6>
+                                                    <span class="badge  badge1">Yoga</span>
+                                                    <div class="duration">
+                                                        <img src="images/clock.png"><span>24 minutes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="inner-thumbnail">
+                                                <img src="images/thumb-img.png">
+
+                                                <div class="inner-thumbnail-details">
+                                                    <h6>Video’s title</h6>
+                                                    <span class="badge badge2">Yoga</span>
+                                                    <div class="duration">
+                                                        <img src="images/clock.png"><span>24 minutes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="inner-thumbnail">
+                                                <img src="images/thumb-img.png">
+                                                <div class="inner-thumbnail-details">
+                                                    <h6>Video’s title</h6>
+                                                    <span class="badge badge3">Yoga</span>
+                                                    <div class="duration">
+                                                        <img src="images/clock.png"><span>24 minutes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="inner-thumbnail">
+                                                <img src="images/thumb-img.png">
+
+                                                <div class="inner-thumbnail-details">
+                                                    <h6>Video’s title</h6>
+                                                    <span class="badge badge2">Yoga</span>
+                                                    <div class="duration">
+                                                        <img src="images/clock.png"><span>24 minutes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="inner-thumbnail">
+                                                <img src="images/thumb-img.png">
+
+                                                <div class="inner-thumbnail-details">
+                                                    <h6>Video’s title</h6>
+                                                    <span class="badge badge3">Yoga</span>
+                                                    <div class="duration">
+                                                        <img src="images/clock.png"><span>24 minutes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="inner-thumbnail">
+                                                <img src="images/thumb-img.png">
+
+                                                <div class="inner-thumbnail-details">
+                                                    <h6>Video’s title</h6>
+                                                    <span class="badge  badge1">Yoga</span>
+                                                    <div class="duration">
+                                                        <img src="images/clock.png"><span>24 minutes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- home item section end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- End of home page items -->
+
+        <!-- dashboard section start -->
+        <section class="main-section dashboard_container" style="display:none;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-div verticalGaps">
+                            <div class="headings" id="dashboard_heading">
+                                <h2>Today’s activities (0)</h2>
+                            </div>
+                            <div class="dashboard-box">
+                                <div class="row" id="activities">
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box">
+                                            <div class="title-box bx1">
+                                                <h6>Video’s title</h6>
+                                            </div>
+                                            <div class="inner-dashboard-details">
+                                                <span>Friday, 16th December 2022</span>
+                                                <h6>11.00 - 12.00</h6>
+                                                <ul>
+                                                    <li>
+                                                        <span class="iconSpan"><img src="images/video.png"> 8
+                                                            videos</span><br>
+                                                        <span class="iconSpan"><img src="images/room.png"> Room
+                                                            202</span>
+                                                    </li>
+                                                    <li><i class="fa fa-play-circle"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box">
+                                            <div class="title-box bx2">
+                                                <h6>Video’s title</h6>
+                                            </div>
+                                            <div class="inner-dashboard-details">
+                                                <span>Friday, 16th December 2022</span>
+                                                <h6>11.00 - 12.00</h6>
+                                                <ul>
+                                                    <li>
+                                                        <span class="iconSpan"><img src="images/video.png"> 8
+                                                            videos</span><br>
+                                                        <span class="iconSpan"><img src="images/room.png"> Room
+                                                            202</span>
+                                                    </li>
+                                                    <li><i class="fa fa-play-circle"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box ">
+                                            <div class="title-box bx3">
+                                                <h6>Video’s title</h6>
+                                            </div>
+                                            <div class="inner-dashboard-details">
+                                                <span>Friday, 16th December 2022</span>
+                                                <h6>11.00 - 12.00</h6>
+                                                <ul>
+                                                    <li>
+                                                        <span class="iconSpan"><img src="images/video.png"> No videos
+                                                            included</span><br>
+                                                        <span class="iconSpan"><img src="images/room.png"> Room
+                                                            202</span>
+                                                    </li>
+                                                    <li><i class="fa fa-play-circle"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box ">
+                                            <div class="title-box bx4">
+                                                <h6>Video’s title</h6>
+                                            </div>
+                                            <div class="inner-dashboard-details">
+                                                <span>Friday, 16th December 2022</span>
+                                                <h6>11.00 - 12.00</h6>
+                                                <ul>
+                                                    <li>
+                                                        <span class="iconSpan"><img src="images/video.png"> 8
+                                                            videos</span><br>
+                                                        <span class="iconSpan"><img src="images/room.png"> Room
+                                                            202</span>
+                                                    </li>
+                                                    <li><i class="fa fa-play-circle"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box ">
+                                            <div class="title-box bx5">
+                                                <h6>Video’s title</h6>
+                                            </div>
+                                            <div class="inner-dashboard-details">
+                                                <span>Friday, 16th December 2022</span>
+                                                <h6>11.00 - 12.00</h6>
+                                                <ul>
+                                                    <li>
+                                                        <span class="iconSpan"><img src="images/video.png"> 8
+                                                            videos</span><br>
+                                                        <span class="iconSpan"><img src="images/room.png"> Room
+                                                            202</span>
+                                                    </li>
+                                                    <li><i class="fa fa-play-circle"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box ">
+                                            <div class="title-box bx6">
+                                                <h6>Video’s title</h6>
+                                            </div>
+                                            <div class="inner-dashboard-details">
+                                                <span>Friday, 16th December 2022</span>
+                                                <h6>11.00 - 12.00</h6>
+                                                <ul>
+                                                    <li>
+                                                        <span class="iconSpan"><img src="images/video.png"> 8
+                                                            videos</span><br>
+                                                        <span class="iconSpan"><img src="images/room.png"> Room
+                                                            202</span>
+                                                    </li>
+                                                    <li><i class="fa fa-play-circle"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- dashboard section end -->
+
+        <!-- sub-category section start -->
+        <section class="main-section subcategory_container" style="display:none;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-div verticalGaps">
+                            <div class="headings" id="subcategory_heading">
+                                <h2>Cognitive</h2>
+                            </div>
+                            <div class="sub-cat-box">
+                                <div class="row" id="subcategories">
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box subcatgeory-item-box">
+                                            <div class="sub-category-image-box">
+                                                <img src="images/category.png">
+                                            </div>
+                                            <div class="title-box  text-center">
+                                                <h6>Subcategory name</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box subcatgeory-item-box">
+                                            <div class="sub-category-image-box">
+                                                <img src="images/category.png">
+                                            </div>
+                                            <div class="title-box  text-center">
+                                                <h6>Subcategory name</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box subcatgeory-item-box">
+                                            <div class="sub-category-image-box">
+                                                <img src="images/category.png">
+                                            </div>
+                                            <div class="title-box  text-center">
+                                                <h6>Subcategory name</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box subcatgeory-item-box">
+                                            <div class="sub-category-image-box">
+                                                <img src="images/category.png">
+                                            </div>
+                                            <div class="title-box  text-center">
+                                                <h6>Subcategory name</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box subcatgeory-item-box">
+                                            <div class="sub-category-image-box">
+                                                <img src="images/category.png">
+                                            </div>
+                                            <div class="title-box  text-center">
+                                                <h6>Subcategory name</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-dashboard-box subcatgeory-item-box">
+                                            <div class="sub-category-image-box">
+                                                <img src="images/category.png">
+                                            </div>
+                                            <div class="title-box  text-center">
+                                                <h6>Subcategory name</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- sub-category section end -->
+
+        <!-- video list container section start -->
+        <section class="main-section video_list_container" style="display:none;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-div verticalGaps">
+                            <div class="headings" id="videolist_heading">
+                                <h2>Cognitive</h2>
+                            </div>
+                            <div class="video-list-box">
+                                <div class="row" id="videolist">
+                                    <div class="col-md-4">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="inner-thumbnail">
+                                            <img src="images/thumb-img.png">
+                                            <div class="inner-thumbnail-details">
+                                                <h6>Video’s title</h6>
+                                                <span class="badge  badge1">Yoga</span>
+                                                <div class="duration">
+                                                    <img src="images/clock.png"><span>24 minutes</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- video list container section end -->
+
+        <!-- setting section start -->
+        <section class="main-section setting_container" style="display:none;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main-div verticalGaps">
+                            <div class="headings" id="setting_heading">
+                                <h2>
+                                    <script type="text/javascript">
+                                        document.write(TXT["SETTINGS"])
+                                    </script>
+                                </h2>
+                            </div>
+                            <div class="setting-box">
+                                <div class="row">
+                                    <div class="col-md-4 pt-3">
+                                        <span class="language-heading">
+                                            <script type="text/javascript">
+                                                document.write(TXT["APPS_LANGUAGE"])
+                                            </script>:
+                                        </span>
+                                    </div>
+                                    <div class="col-md-5 language-box" id="languages">
+                                        <div class="app-language focusable" tabindex="15" id="lang_0"
+                                            data-sn-down="null" data-sn-up="null" data-sn-right="#lang_1"
+                                            data-sn-left="#menu_3" data-locale="en-EN">
+                                            <h3>
+                                                <script type="text/javascript">
+                                                    document.write(TXT["ENGLISH"])
+                                                </script>
+                                            </h3>
+                                        </div>
+                                        <div class="app-language focusable" tabindex="15" id="lang_1"
+                                            data-sn-down="null" data-sn-up="null" data-sn-right="#lang_2"
+                                            data-sn-left="#lang_0" data-locale="pt-PT">
+                                            <h3>
+                                                <script type="text/javascript">
+                                                    document.write(TXT["PORTUGUESE"])
+                                                </script>
+                                            </h3>
+                                        </div>
+                                        <div class="app-language focusable" tabindex="15" id="lang_2"
+                                            data-sn-left="#lang_1" data-sn-up="null" data-sn-right="null"
+                                            data-sn-down="null" data-locale="fr-FR">
+                                            <h3>
+                                                <script type="text/javascript">
+                                                    document.write(TXT["FRENCH"])
+                                                </script>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- setting section end -->
+
+    </div>
+
+    <!-- Start of video container -->
+    <div class="video-player-container">
+        <div class="video_player_about_video" id="video_player_about_video">
+            <div class="row">
+                <div class="col-md-6 video-title-desc">
+                    <div id="videoTitle">Video Title</div>
+                    <div id="videoDesc">Video Description</div>
+                </div>
+                <div class="col-md-6 video-categoy-int-duration">
+                    <div id="videoCategory">category</div>
+                    <div id="videoIntensity">
+                        <span class="color-circle intensity-color-mid"></span>
+                        <h4>Blue Intensity</h4>
+                    </div>
+                    <div>
+                        <img src="images/clock.png">
+                        <h4 id="videoDuration">24 minutes</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="videoSection" class="player_icon_box">
+            <div tabindex='16' class="video-container video_container focusable" id="video_container"
+                data-sn-right="null" data-sn-left="null" data-sn-up="null" data-sn-down="null">
+                <!-- default video player -->
+            </div>
+            <!-- Start Previous / Next Video -->
+            <div class="video_next_previous_container" tabindex="9" id="videoNextPrevious" style="display: none;">
+                <ul class="video_next_previous_icon_list">
+                    <div class="next-pre_box">
+                        <li class="video_next_previous_play_pause_center focusable" id="playPauseVideo" data-name="play"
+                            data-sn-left="null" data-sn-right="null" data-sn-down="null">
+                            <img src="images/pause.png" id="playPauseIcon">
+                        </li>
+                    </div>
+                    <div class="next-pre_box">
+                        <li class="next_prev_video focusable" id="playPreviousVideo" data-name="previous"
+                            data-sn-left="null" data-sn-right="null" data-sn-down="null"><img src="images/previous.png">
+                        </li>
+                        <li class="next_prev_video focusable" id="playNextVideo" data-name="next" data-sn-left="null"
+                            data-sn-right="null" data-sn-down="null"><img src="images/next.png">
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <!-- End Previous / Next Video -->
+        </div>
+    </div>
+    <!-- End of video container -->
+
+    <!-- Start of loader container -->
+    <div class="loader" id="loader">
+        <div class="circle_loader"></div>
+    </div>
+    <!-- End of loader container -->
+
+    <!-- Start of popup screen -->
+    <span id="modal_container" class="modal_container">
+        <!-- Html file will come here -->
+    </span>
+    <!-- End popup screen -->
+
+    <!-- Start of remote hint -->
+    <div class="row" id="remoteIns">
+        <div class="col-md-12">
+            <div class="hint-box">
+                <img src="images/remote.png" alt="Remote">
+            </div>
+        </div>
+    </div>
+    <!-- End  of remote hint  -->
+    <script type="text/javascript" src="lang/fr/fr.js"></script>
+    <script type="text/javascript" src="lib/navigation/spatial_navigation.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/api-v1.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/video-player.js"></script>
+    <script type="text/javascript" src="js/navigation-common-function.js"></script>
+    <script type="text/javascript" src="js/magicRemoteEventListeners.js"></script>
+    <script type="text/javascript" src="lib/navigation/bootstrapBundle-5-2-2.js"></script>
+</body>
+
+</html>

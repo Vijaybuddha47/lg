@@ -1,0 +1,18 @@
+{
+    "appDescription": "",
+    "icon": "80x80.png",
+    "main": "splash.html",
+    "title": "RADIOCALIMA",
+    "type": "web",
+    "resolution": "1280x720",
+    "version": "2.0.3",
+    "splashBackground": "images/splash_screen.png",
+    "transparent":false,
+    "handlesRelaunch":false,
+    "bgColor": "#ffffff",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "400x400.png",
+    "iconColor": "#ffffff",
+    "id": "com.radiocalima.app",
+    "disableBackHistoryAPI":true
+}

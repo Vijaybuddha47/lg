@@ -1,0 +1,424 @@
+/* Start Video container */
+.video-container {
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background: #000;
+    z-index: 1;
+    width: 1920px;
+    height: 1080px;
+    display: none;
+}
+
+/** Start Next previous video **/
+.video_next_previous_container {
+    position: absolute;
+    bottom: 5px;
+    display: none;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+ul.video_next_previous_icon_list {
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+ul.video_next_previous_icon_list li {
+    margin: 0px 0px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 30px;
+}
+
+.video_next_previous_play_pause_center {
+    position: relative;
+    top: 13px;
+}
+
+ul.video_next_previous_icon_list li:focus {
+    background: #EAC0C0;
+}
+
+ul.video_next_previous_icon_list li.next_prev_video {
+    height: 76px;
+    width: 100px;
+    padding-top: 26px;
+}
+
+/** End Next previous video **/
+/** Start of channel DVR setting **/
+.channel_dvr_box {
+    display: none;
+    position: absolute;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    height: 1080px;
+    z-index: 9999;
+}
+
+.channel_dvr_title {
+    font-size: 68px;
+    font-family: 'Arial-bold';
+    text-align: center;
+    color: #fff;
+    width: 1920px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    position: fixed;
+    top: 10px;
+}
+
+.epg_right_side_time {
+    font-size: 30px;
+    font-family: 'Arial-bold';
+    text-align: right;
+    color: #fff;
+    width: 1920px;
+    right: 32px;
+    position: fixed;
+    top: 32px;
+}
+
+ul.dvr_list {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    width: 1000000000000px;
+    clear: both;
+}
+
+ul.dvr_list_epg {
+    width: 100% !important;
+}
+
+ul.dvr_list li {
+    margin: 20px 20px;
+    float: left;
+}
+
+.dvr_bluebox {
+    font-size: 30px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    text-align: left;
+    color: #fff;
+    padding: 15px 15px;
+    border-radius: 7px 7px;
+    width: 340px;
+}
+
+.time_list,
+.time_text {
+    /*margin-bottom: 10px;*/
+    width: 325px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*display: -webkit-box;*/
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    line-height: 31px;
+}
+
+ul.dvr_list li:focus,
+.dvr_activate {
+    background-image: linear-gradient(#3a96c3, #4fd8d6);
+}
+
+.no_epg {
+    width: 1920px;
+    text-align: center;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    background-color: #271c1c;
+    opacity: 0.9;
+    padding-top: 476px;
+    padding-bottom: 554px;
+}
+
+.no_epg span {
+    font-family: Arial-bold;
+    font-size: 50px;
+    color: #fff;
+}
+
+/** Start All/single EPG icons **/
+.programme_info {
+    position: absolute;
+    display: none;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    float: left;
+    z-index: 2;
+    height: 288px;
+    bottom: 0px;
+}
+
+.programme_details {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: 150px;
+    padding-left: 30px;
+    padding-right: 30px;
+    float: left;
+    background: #808080;
+}
+
+.programme_title {
+    color: #fff;
+    font-family: Arial-bold;
+    font-size: 30px;
+    line-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    width: 1720px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.programme_desc {
+    color: #fff;
+    font-family: Arial-bold;
+    font-size: 20px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    width: 1720px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.epg-icons {
+    float: right;
+    position: relative;
+    bottom: 80px;
+    right: 30px;
+}
+
+.epg_button {
+    color: #fff;
+    font-family: Arial-bold;
+    font-size: 20px;
+    background: #398DB7;
+    margin-top: 33px;
+    border-radius: 6px 6px;
+    border-color: transparent;
+    padding: 5px 20px 5px 20px;
+}
+
+.epg_button:focus {
+    background: #EAC0C0;
+}
+
+/** End All/single EPG icons **/
+/* End Video container */
+
+.epgUlContainer {
+    margin-top: 100px;
+    height: 892px;
+    overflow: hidden;
+    position: relative;
+    /*overflow: auto;*/
+    white-space: nowrap;
+}
+
+/** EPS created **/
+
+.set_progressbar {
+    bottom: 80px !important;
+}
+
+.live-progress-bar {
+    width: 88% !important;
+}
+
+.custom_control_container {
+    display: none;
+}
+
+.custom-controls {
+    width: 140px;
+    height: 145px;
+    float: left;
+    color: #fff;
+    font-size: 24px;
+    padding: 40px 0px 20px 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.custom-controls:focus {
+    background-color: #f64827;
+}
+
+.custom_control_text {
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.arrows {
+    width: 3%;
+    float: left;
+    padding-top: 15px;
+}
+
+.arrows img {
+    width: 60px;
+    height: 60px;
+}
+
+.arrow-right {
+    float: right;
+    bottom: 86px;
+    position: relative;
+}
+
+.arrows:focus {
+    background-color: #f64827;
+}
+
+.programme-details {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: 150px;
+    padding-left: 30px;
+    padding-right: 30px;
+    float: left;
+}
+
+/* .programme-details:focus {
+    border: 2px solid #f64827;
+} */
+
+.timeSlotContainer {
+    width: 1920px;
+    height: 1080px;
+}
+
+.timeSlotBox {
+    background: #5d5d5d;
+    padding: 39px;
+    color: #fff;
+    width: 430px;
+    font-size: 30px;
+    text-align: center;
+    float: left;
+    margin-top: 34px;
+    margin-right: 25px;
+    margin-left: 25px;
+    font-weight: 600;
+    border: 2px solid #fff;
+    margin-top: 35px;
+}
+
+.timeSlotBox:focus {
+    background: #f64827;
+    border-color: #f64827;
+}
+
+.date_Options {
+    width: 430px;
+    display: none;
+    color: #fff;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    box-shadow: 0px 3px 9px 0px #000;
+}
+
+.date_Options li {
+    padding: 15px;
+    background: #5d5d5d;
+    margin-top: 1px;
+    font-size: 25px;
+    letter-spacing: 1px;
+
+}
+
+.date_Options li:focus {
+    background: #f64827;
+}
+
+.dropText:focus {
+    background: #f64827;
+}
+
+.dropText {
+    background: #f64827;
+    width: 430px;
+    padding: 39px;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0px auto;
+    margin-top: 40px;
+    margin-bottom: 0;
+    background: #5d5d5d;
+}
+
+ul.language-option {
+    position: absolute;
+    display: none;
+    bottom: 152px;
+    width: 140px;
+}
+
+ul.language-option li {
+    padding: 2px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 1.5;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+ul.language-option li:focus {
+    background: #f64827;
+}
+
+.programme-detail {
+    width: 94%;
+    border: 2px solid transparent;
+    position: relative;
+    height: 86px;
+    left: 3%;
+}
+
+.programme-detail:focus {
+    border: 2px solid #f64827;
+}
+
+.customProgressBar {
+    text-align: center;
+    position: relative;
+    top: 160px;
+    display: none;
+}

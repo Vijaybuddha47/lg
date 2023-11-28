@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=1920, user-scalable=no'>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <title>Radio Calima</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/video-player.css">
+    <!-- <link rel="stylesheet" href="lib/player/mediaelementplayer.css"> -->
+
+    <script type="text/javascript" src="lib/navigation/jquery-3.6.3.min.js"></script>
+    <script type="text/javascript" src="lib/navigation/lodash.min.js"></script>
+    <script type="text/javascript" src="lib/navigation/spatial_navigation.js"></script>
+    <script type="text/javascript" src="lib/icecast-metadata-stats-0.1.3.min.js"></script>
+    <script type="text/javascript" src="lib/icecast-metadata-stats-0.1.3.min.js.map"></script>
+    <script type="text/javascript" src="lib/player/mediaelement-and-player.js"></script>
+    <script type="text/javascript" src="webOSTVjs-1.2.4/webOSTV.js"></script>
+    </script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="background_box">
+            <img src="images/background_image.png" class="background_imgbox" />
+        </div>
+        <!-- Start of header -->
+        <div class="header">
+            <div class="navigation_box">
+                <div class="logo_box"><img class="header_logo" src="images/logo.png" alt="logo"></div>
+                <ul class="navbar" id="menu_items">
+                    <img class="border_bottom" id="border_bottom" src="./images/menu_border.png" alt="">
+                    <li class="nav_box focusable" id="menu_0" tabindex='1' data-sn-up="null" data-sn-right="#menu_1"
+                        data-sn-left="null" data-sn-down="#home_0">
+                        <div class="menu_box">
+                            <img src="./images/home_icon.png" alt="home_icon"><span>Home</span>
+                        </div>
+                    </li>
+                    <li class="nav_box focusable" id="menu_1" tabindex='1' data-sn-up="null" data-sn-right="null"
+                        data-sn-left="#menu_0" data-sn-down="null">
+                        <div class="menu_box">
+                            <img src="images/user_icon.png" alt="About"><span>About</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- End of header -->
+
+        <div class="home_container" style="display: none;">
+            <div class="banner_box">
+                <ul class="home_inner" id="homeBtn">
+                    <!-- <li class="main_heading"> Calima TV </li> -->
+                    <li class="sub_heading">La radio en canarias</li>
+                    <!-- <li class="details_text">
+                        <img src="./images/home_star_icon.png" alt="">
+                        <span>High quality radial wedges that impact the customer .</span>
+                    </li>
+                    <li class="details_text">
+                        <img src="./images/home_star_icon.png" alt="">
+                        <span>Corporate videos for your company with the best quality.</span>
+                    </li> -->
+                    <li class="live_btn focusable" id="home_0" tabindex='2' data-sn-up="#menu_0" data-sn-right="#home_1"
+                        data-sn-left="null" data-sn-down="null">
+                        <div class="home_btn">
+                            <img class="live_icon" src="./images/live_icon.png" alt="">
+                            <span>TV</span>
+                            <!-- <img class="live_icon_border" src="./images/buttons_border.png" alt=""> -->
+                        </div>
+                    </li>
+                    <li class="radio_btn focusable" id="home_1" tabindex='2' data-sn-up="#menu_0" data-sn-right="null"
+                        data-sn-left="#home_0" data-sn-down="null">
+                        <div class="home_btn">
+                            <img class="radio_icon" src="./images/radio_icon.png" alt="">
+                            <span>Radio</span>
+                            <!-- <img class="radio_icon_border" src="./images/buttons_border.png" alt=""> -->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="radio_container" style="display: none;">
+            <div class="radio_inner_box">
+                <div class="poster_box">
+                    <img id="music_cover" src="./images/music-bg.png" alt="poster-image">
+                    <div class="about_img">
+                        <div class="radio_player_container">
+                            <div class="audio_player">
+                                <div class="sidescroll_container">
+                                    <div class="sidescrollbar">
+                                        <img id="music_img_change" src="" />
+                                        <!-- <img id="music_img_change" src="images/waveform.gif" /> -->
+                                        <!-- <div class="sidefill" id="podcast_progress_bar">&nbsp;</div> -->
+                                    </div>
+                                    <div class="podcast_container_box" id="audioSection">
+                                        <div class="audio_container" id="audio_container"></div>
+                                    </div>
+                                    <!-- <div class="audio_container" id="audio_container"></div> -->
+                                    <span class="sidescroll_time" id="podcast_current_time"
+                                        style="display: none;"></span>
+                                    <div class="audio-paly-pause">
+                                        <!-- <img src="images/play.png" alt="play/pause"> -->
+                                    </div>
+                                    <!-- <span class="sidescroll_time sidescrollright" id="podcast_duration">42:17</span> -->
+                                </div>
+                                <div class="video-inner" style="display: none;">
+                                    <h4 class="video-title"></h4>
+                                    <!-- Start of video loader -->
+                                    <div class="video-buffered">
+                                        <div class="buffered_dimension_audio"></div>
+                                    </div>
+                                    <!-- End of video loader -->
+                                </div>
+                                <!--<div class="audio_container focusable" tabindex="6" data-sn-right='null' data-sn-left='null' data-sn-up='null' data-sn-down='null' id="audio_container"></div>--->
+                            </div>
+                        </div>
+                        <div class="poster_heading" style="display: none;">
+                            <marquee class="marquee marquee-text" id="current_music_title"></marquee>
+                        </div>
+                        <div class="poster_disc">We invite you to share the official page of Calima TV, so that your
+                            family,
+                            friends and the whole world know about all our live events .We invite you to
+                            share the official page of Calima TV, so that your family, friends and the.......
+                        </div>
+                    </div>
+                </div>
+                <div class="right_content">
+                    <ul class="channel_list" id="musicList">
+                        <li class="listing focusable" id="music_0" tabindex='3' data-sn-up="null" data-sn-right="null"
+                            data-sn-left="null" data-sn-down="#music_1">
+                            <div class="img_box">
+                            </div>
+                            <div class="music_list_box">
+                                <img class="list_thumbnail" src="./images/App_GC_calima.png" alt="">
+                                <div class="list_disc">GRAN CANARIA</div>
+                            </div>
+                        </li>
+                        <li class="listing focusable" id="music_1" tabindex='3' data-sn-up="#music_0"
+                            data-sn-right="null" data-sn-left="null" data-sn-down="#music_2">
+                            <div class="img_box">
+                            </div>
+                            <div class="music_list_box">
+                                <img class="list_thumbnail" src="./images/App_TE_calima.png" alt="">
+                                <div class="list_disc">TENERIFE</div>
+                            </div>
+                        </li>
+                        <li class="listing focusable" id="music_2" tabindex='3' data-sn-up="#music_1"
+                            data-sn-right="null" data-sn-left="null" data-sn-down="#music_3">
+                            <div class="img_box"></div>
+                            <div class="music_list_box">
+                                <img class="list_thumbnail" src="./images/App_FL_calima.png" alt="">
+                                <div class="list_disc">FUERTEVENTURA-LANZAROTE</div>
+                            </div>
+                        </li>
+                        <li class="listing focusable" id="music_3" tabindex='3' data-sn-up="#music_2"
+                            data-sn-right="null" data-sn-left="null" data-sn-down="null">
+                            <div class="img_box"></div>
+                            <div class="music_list_box">
+                                <img class="list_thumbnail" src="./images/App_CE_calima.png" alt="">
+                                <div class="list_disc">CERO</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="about_container" style="display: none;">
+            <div class="about_inner_container">
+                <div class="About_heading">About</div>
+                <img class="about_content_border" src="./images/about_content_border.png" alt="">
+                <div class="about_text">
+                    Radio Calima è la radio di informazione ed intrattenimento per la comunità italiana che vive
+                    nell’arcipelago Canario e i turisti italiani che lo visitano.
+                    La radio parla principalmente in Italiano ma sono sempre più gli ascoltatori in lingua spagnola che
+                    la seguono ogni giorno.
+                    Musica italiana ed internazionale, notizie dell’arcipelago e dall’Italia.
+                    Radio Calima è la Radio en Canarias.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start of video container -->
+    <div class="video-player-container">
+        <div id="videoSection">
+            <div class="video-container video_container focusable video_box" id="video_container" tabindex='8'
+                data-sn-right="null" data-sn-left="null" data-sn-up="null">
+            </div>
+
+            <div class="video-inner" style="display: none;">
+                <h4 class="video-title"></h4>
+                <!-- Start of video loader -->
+                <div class="video-buffered">
+                    <div class="circle_loader buffered_dimension"></div>
+                </div>
+                <!-- End of video loader -->
+            </div>
+        </div>
+    </div>
+    <!-- End of video container -->
+
+    <div class="loader" id="loader">
+        <div class="circle_loader"></div>
+    </div>
+
+    <!-- Start of popup screen -->
+    <span id="modal_container" class="modal_container">
+        <!-- Html file will come here -->
+    </span>
+    <!-- End popup screen -->
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/navigation-common-function.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/api-v1.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/video-player.js"></script>
+    <script type="text/javascript" src="js/audio.js"></script>
+    <script type="text/javascript" src="js/magicRemoteEventListeners.js"></script>
+</body>
+
+</html>

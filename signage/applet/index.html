@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+        <meta content="utf-8" http-equiv="encoding" />
+        <meta http-equiv="Cache-control" content="public" />
+        <link rel="stylesheet" type="text/css" href="./css/index.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet" />
+
+        <!-- <script src="cordova.js"></script> -->
+        <script src="./js/bundle.js"></script>
+        <script>
+            var device = 'signageOS';
+        </script>
+        <!-- <script src="./js/device.js"></script> -->
+
+        <script src="./js/crypto-js.min.js"></script>
+        <script src="./js/es6-promise.auto.min.js"></script>
+        <script src="./js/fetch.min.js"></script>
+        <script src="./js/qrcode.min.js"></script>
+        <script src="./js/pdf.js"></script>
+
+        <title>Angalia Digital Signage Player</title>
+    </head>
+
+    <body>
+        <div id="log-container" hidden>
+            <p id="nowPlaying"></p>
+            <pre id="logger"></pre>
+            <div id="showThisWindow"></div>
+        </div>
+        <p id="alertNoConnection"></p>
+
+        <span id="timer"></span>
+
+        <section id="login">
+            <h1 id="qrHeader">Go to <br /><u>app.angalia.co/</u> <br />to connect your new screen:</h1>
+            <section id="qrcode"></section>
+            <form id="sidebar">
+                <header>
+                    <h1 id="loginHeader">Or login here:</h1>
+                </header>
+                Email<br />
+                <input type="text" name="uname" id="inputEmail" class="loginInput" autofocus /><br />
+                Password<br />
+                <input type="password" name="pass" id="inputPassword" class="loginInput" /><br />
+                <section id="formError"></section>
+                <button id="goButton" type="button">Go!</button>
+                <section id="playlistsContainer" hidden>
+                    Choose playlist: <br />
+                    <select id="playlistsList"></select>
+                    <button id="playButton" type="button">Play!</button>
+                </section>
+            </form>
+        </section>
+
+        <img id="loader" src="./assets/loader.gif" alt="Loading" hidden />
+
+        <div id="container"></div>
+
+        <script src="./js/util.js"></script>
+        <script src="./js/connect.js"></script>
+        <script src="./js/parse.js"></script>
+        <script src="./js/play.js"></script>
+    </body>
+</html>

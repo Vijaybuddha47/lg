@@ -1,0 +1,18 @@
+{
+    "appDescription": "",
+    "icon": "images/80x80px.png",
+    "main": "home.html",
+    "title": "Youkid",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.4",
+    "splashBackground": "images/bg_img.png",
+    "transparent":false,
+    "handlesRelaunch":false,
+    "bgColor": "#4094de",
+    "vendor": "Fusioni Technologies PVT. LTD.",
+    "largeIcon": "images/launch_logo.png",
+    "iconColor": "#4094de",
+    "id": "com.youkid.app",
+    "disableBackHistoryAPI":true
+}

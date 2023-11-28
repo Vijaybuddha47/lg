@@ -1,0 +1,10 @@
+{
+    "vendor": "My Company",
+    "largeIcon": "largeIcon.png",
+    "icon": "icon.png",
+    "main": "videojs.html",
+    "id": "com.video.sample.app",
+    "title": "VideoSample",
+    "type": "web",
+    "version": "0.0.1"
+}
